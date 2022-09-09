@@ -11,6 +11,8 @@ import ContactInfo from '../components/ContactInfo';
 import Footer from '../components/Footer';
 // import PostCard from '../components/PostCard';
 import { getAllPosts } from '../lib/test-data';
+import { GET_WORK } from '../lib/work';
+import { getWorks } from '../lib/work';
 
 export default function Home({ posts, work }) {
 	return (
@@ -51,60 +53,32 @@ export default function Home({ posts, work }) {
 					})}
 				</div>
 				</main> */}
-			{console.log(work)}
+			{/* {console.log(work)} */}
 			<Footer />
 		</>
 	);
 }
 
 export async function getStaticProps() {
-	const GET_WORK = gql`
-		query AllWorks {
-			caseStudies(first: 10000, where: { hasPassword: false }) {
-				edges {
-					node {
-						caseStudyTitle
-						slug
-						caseStudyId
-						finalImage {
-							mediaItemUrl
-						}
-						modified
-					}
-				}
-			}
-		}
-	`;
-	// Paste your GraphQL query inside of a gql tagged template literal
-	const GET_POSTS = gql`
-		query AllPostsQuery {
-			posts {
-				nodes {
-					title
-					content
-					date
-					uri
-				}
-			}
-		}
-	`;
 	// Here we make a call with the client and pass in our query string to the
 	// configuration objects 'query' property
-	const response = await client.query({
-		query: GET_POSTS,
-	});
+	// const response = await client.query({
+	// 	query: GET_POSTS,
+	// });
 	// Once we get the response back, we need to traverse it to pull out the
 	// data we want to pass into the HomePage
-	const posts = response?.data?.posts?.nodes;
+	// const posts = response?.data?.posts?.nodes;
 
-	const workresponse = await client.query({
-		query: GET_WORK,
-	});
-	const work = workresponse?.data?.caseStudies?.edges;
+	// const workresponse = await client.query({
+	// 	query: GET_WORK,
+	// });
+	// const work = workresponse?.data?.caseStudies?.edges;
+
+	const work = await getWorks();
 
 	return {
 		props: {
-			posts,
+			// posts,
 			work,
 		},
 	};
