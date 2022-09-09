@@ -29,6 +29,7 @@ export default function WorkGrid({
 							const featured = locations.filter(
 								(o) => o.slug == 'featured-case-study'
 							);
+							// This counter method only works client side. Doesn't match server side render, so use graphql query sorting for this instead of using same work query. Dynamic variables in the graphql query should be possible.
 							if (featured.length >= 1 && featCounter <= 0) {
 								featCounter++;
 								return (
