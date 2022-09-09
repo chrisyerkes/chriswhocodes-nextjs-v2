@@ -6,6 +6,8 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import fpo1 from '../../public/static-assets/images/fpo_featured-work.jpg';
 import fpo2 from '../../public/static-assets/images/fpo_work-item.jpg';
 
+let featCounter = 0;
+
 // const WorkGrid = ({
 // 	children,
 // 	className = 'content-section has-tinted-background my-work',
@@ -20,37 +22,56 @@ export default function WorkGrid({
 				<div className='row'>
 					<div className='col'>
 						<h2 className='section-title'>View my work</h2>
-						<div className='work-wrapper d-block d-lg-flex featured-work'>
-							<div className='featured-work-image'>
-								<img
-									src={fpo1.src}
-									alt='Featured Work'
-									className='img-fluid'
-								/>
-							</div>
-							<div className='featured-work-description'>
-								<h5>Featured</h5>
-								<div className='d-flex flex-column justify-content-center h-100 description-wrapper'>
-									<h3>Coffee by Benjamin</h3>
-									<p>
-										An e-commerce application built with
-										React & Shopify for a coffee roasting
-										company.
-									</p>
-									<p>
-										<a
-											href='/project_01.html'
-											className='btn btn-link btn-link-sm stretched-link has-arrow-right'
-										>
-											View Project{' '}
-											<FontAwesomeIcon
-												icon={faArrowRight}
+						{work.map((el) => {
+							const locations =
+								el.node.caseStudyFeedLocations?.nodes;
+
+							const featured = locations.filter(
+								(o) => o.slug == 'featured-case-study'
+							);
+							if (featured.length >= 1 && featCounter <= 0) {
+								featCounter++;
+								return (
+									<div
+										key={el.node.slug}
+										className='work-wrapper d-block d-lg-flex featured-work'
+									>
+										<div className='featured-work-image'>
+											<img
+												src={fpo1.src}
+												alt='Featured Work'
+												className='img-fluid'
 											/>
-										</a>
-									</p>
-								</div>
-							</div>
-						</div>
+										</div>
+										<div className='featured-work-description'>
+											<h5>Featured</h5>
+											<div className='d-flex flex-column justify-content-center h-100 description-wrapper'>
+												<h3>
+													{el.node.caseStudyTitle}
+												</h3>
+												<p>
+													An e-commerce application
+													built with React & Shopify
+													for a coffee roasting
+													company.
+												</p>
+												<p>
+													<a
+														href='/project_01.html'
+														className='btn btn-link btn-link-sm stretched-link has-arrow-right'
+													>
+														View Project{' '}
+														<FontAwesomeIcon
+															icon={faArrowRight}
+														/>
+													</a>
+												</p>
+											</div>
+										</div>
+									</div>
+								);
+							}
+						})}
 					</div>
 				</div>
 				<div
@@ -185,7 +206,16 @@ export default function WorkGrid({
 				</div>
 			</div>
 			{work.map((post) => {
-				return <h1 key={post.node.slug}>{post.node.caseStudyTitle}</h1>;
+				const locations = post.node.caseStudyFeedLocations.nodes;
+				return (
+					<h1 key={post.node.slug}>
+						{post.node.caseStudyTitle} in the{' '}
+						{locations.map((location) => {
+							return location.slug;
+						})}{' '}
+						location
+					</h1>
+				);
 			})}
 		</section>
 	);
