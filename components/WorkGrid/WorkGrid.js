@@ -6,7 +6,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import fpo1 from '../../public/static-assets/images/fpo_featured-work.jpg';
 import fpo2 from '../../public/static-assets/images/fpo_work-item.jpg';
 
-let featCounter = 0;
+// let featCounter = 0;
 
 // const WorkGrid = ({
 // 	children,
@@ -14,6 +14,7 @@ let featCounter = 0;
 // }) => {
 export default function WorkGrid({
 	work,
+	featWork,
 	className = 'content-section has-tinted-background my-work',
 }) {
 	return (
@@ -22,56 +23,60 @@ export default function WorkGrid({
 				<div className='row'>
 					<div className='col'>
 						<h2 className='section-title'>View my work</h2>
-						{work.map((el) => {
-							const locations =
-								el.node.caseStudyFeedLocations?.nodes;
+						{featWork.map((el) => {
+							// const locations =
+							// 	el.node.caseStudyFeedLocations?.nodes;
 
-							const featured = locations.filter(
-								(o) => o.slug == 'featured-case-study'
-							);
+							// const featured = locations.filter(
+							// 	(o) => o.slug == 'featured-case-study'
+							// );
 							// This counter method only works client side. Doesn't match server side render, so use graphql query sorting for this instead of using same work query. Dynamic variables in the graphql query should be possible.
-							if (featured.length >= 1 && featCounter <= 0) {
-								featCounter++;
-								return (
-									<div
-										key={el.node.slug}
-										className='work-wrapper d-block d-lg-flex featured-work'
-									>
-										<div className='featured-work-image'>
-											<img
-												src={fpo1.src}
-												alt='Featured Work'
-												className='img-fluid'
+							// if (featured.length >= 1 && featCounter <= 0) {
+							// 	featCounter++;
+							return (
+								<div
+									key={el.node.slug}
+									className='work-wrapper d-block d-lg-flex featured-work'
+								>
+									<div className='featured-work-image'>
+										<img
+											src={fpo1.src}
+											alt='Featured Work'
+											className='img-fluid'
+										/>
+									</div>
+									<div className='featured-work-description'>
+										<h5>Featured</h5>
+										<div className='d-flex flex-column justify-content-center h-100 description-wrapper'>
+											<h3>{el.node.caseStudyTitle}</h3>
+											{/* <p>
+												An e-commerce application built
+												with React & Shopify for a
+												coffee roasting company.
+											</p> */}
+											<div
+												className='mini-description'
+												dangerouslySetInnerHTML={{
+													__html: el.node
+														.projectMiniDescription,
+												}}
 											/>
-										</div>
-										<div className='featured-work-description'>
-											<h5>Featured</h5>
-											<div className='d-flex flex-column justify-content-center h-100 description-wrapper'>
-												<h3>
-													{el.node.caseStudyTitle}
-												</h3>
-												<p>
-													An e-commerce application
-													built with React & Shopify
-													for a coffee roasting
-													company.
-												</p>
-												<p>
-													<a
-														href='/project_01.html'
-														className='btn btn-link btn-link-sm stretched-link has-arrow-right'
-													>
-														View Project{' '}
-														<FontAwesomeIcon
-															icon={faArrowRight}
-														/>
-													</a>
-												</p>
-											</div>
+											<p>
+												<a
+													href='/project_01.html'
+													className='btn btn-link btn-link-sm stretched-link has-arrow-right'
+												>
+													View Project{' '}
+													<FontAwesomeIcon
+														icon={faArrowRight}
+													/>
+												</a>
+											</p>
 										</div>
 									</div>
-								);
-							}
+								</div>
+							);
+							// }
 						})}
 					</div>
 				</div>
@@ -79,6 +84,18 @@ export default function WorkGrid({
 					className='grid work-grid'
 					style={{ columnGap: 80 + 'px', rowGap: 74 + 'px' }}
 				>
+					{work.map((el) => {
+						return (
+							<div
+								className='g-col-12 g-col-6 work-item'
+								key={el.node.slug}
+							>
+								<div className='work-description'>
+									<h3>{el.node.caseStudyTitle}</h3>
+								</div>
+							</div>
+						);
+					})}
 					<div className='g-col-12 g-col-md-6 work-item'>
 						<div className='card'>
 							<div className='work-image'>
