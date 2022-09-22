@@ -24,6 +24,13 @@
 			4px 12px 30px rgba(0, 0, 0, 0.28);
 	}
 	.featured-work-image {
+		min-width: 50%;
+		overflow: hidden;
+		aspect-ratio: 558 / 385;
+
+		@include media-breakpoint-down(md) {
+			min-width: auto;
+		}
 		@include media-breakpoint-down(xl) {
 			img {
 				width: 100%;

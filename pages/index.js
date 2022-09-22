@@ -1,6 +1,3 @@
-import { client } from '../lib/apollo';
-import { gql } from '@apollo/client';
-
 import Head from 'next/head';
 import TemplateHeader from '../components/TemplateHeader';
 import HomeHero from '../components/HomeHero';

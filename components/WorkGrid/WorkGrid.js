@@ -1,10 +1,9 @@
 import React from 'react';
-// import { client } from '../../lib/apollo';
-// import { gql } from '@apollo/client';
+import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import fpo1 from '../../public/static-assets/images/fpo_featured-work.jpg';
-import fpo2 from '../../public/static-assets/images/fpo_work-item.jpg';
+// import fpo1 from '../../public/static-assets/images/fpo_featured-work.jpg';
+// import fpo2 from '../../public/static-assets/images/fpo_work-item.jpg';
 
 // let featCounter = 0;
 
@@ -59,11 +58,6 @@ export default function WorkGrid({
 										<h5>Featured</h5>
 										<div className='d-flex flex-column justify-content-center h-100 description-wrapper'>
 											<h3>{el.node.caseStudyTitle}</h3>
-											{/* <p>
-												An e-commerce application built
-												with React & Shopify for a
-												coffee roasting company.
-											</p> */}
 											<div
 												className='mini-description'
 												dangerouslySetInnerHTML={{
@@ -72,15 +66,14 @@ export default function WorkGrid({
 												}}
 											/>
 											<p>
-												<a
-													href='/project_01.html'
-													className='btn btn-link btn-link-sm stretched-link has-arrow-right'
-												>
-													View Project{' '}
-													<FontAwesomeIcon
-														icon={faArrowRight}
-													/>
-												</a>
+												<Link href={el.node.uri}>
+													<a className='btn btn-link btn-link-sm stretched-link has-arrow-right'>
+														View Project{' '}
+														<FontAwesomeIcon
+															icon={faArrowRight}
+														/>
+													</a>
+												</Link>
 											</p>
 										</div>
 									</div>
@@ -128,22 +121,21 @@ export default function WorkGrid({
 											}}
 										/>
 										<p className='d-flex flex-fill flex-column align-items-start justify-content-end'>
-											<a
-												href='#'
-												className='btn stretched-link btn-link btn-link-sm'
-											>
-												View Project{' '}
-												<FontAwesomeIcon
-													icon={faArrowRight}
-												/>
-											</a>
+											<Link href={el.node.uri}>
+												<a className='btn stretched-link btn-link btn-link-sm'>
+													View Project{' '}
+													<FontAwesomeIcon
+														icon={faArrowRight}
+													/>
+												</a>
+											</Link>
 										</p>
 									</div>
 								</div>
 							</div>
 						);
 					})}
-					<div className='g-col-12 g-col-md-6 work-item'>
+					{/* <div className='g-col-12 g-col-md-6 work-item'>
 						<div className='card'>
 							<div className='work-image'>
 								<img
@@ -254,7 +246,7 @@ export default function WorkGrid({
 								</p>
 							</div>
 						</div>
-					</div>
+					</div> */}
 				</div>
 				<div className='row'>
 					<div className='col text-center'>

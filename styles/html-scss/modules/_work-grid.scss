@@ -2,10 +2,12 @@
 	@include rfs(100px, margin-bottom);
 
 	@include media-breakpoint-down(lg) {
-		--bs-gap: 50px 30px !important;
+		column-gap: 50px !important;
+		row-gap: 30px !important;
 	}
 	@include media-breakpoint-down(md) {
-		--bs-gap: 55px 0 !important;
+		column-gap: 0 !important;
+		row-gap: 55px !important;
 	}
 	.work-item {
 		.card {
