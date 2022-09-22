@@ -100,7 +100,7 @@ export default function WorkGrid({
 								className='g-col-12 g-col-md-6 work-item'
 								key={el.node.slug}
 							>
-								<div className='card'>
+								<div className='card d-flex flex-column'>
 									<div className='work-image'>
 										<img
 											srcSet={
@@ -118,7 +118,7 @@ export default function WorkGrid({
 											className='img-fluid'
 										/>
 									</div>
-									<div className='work-description'>
+									<div className='work-description d-flex flex-fill flex-column'>
 										<h3>{el.node.caseStudyTitle}</h3>
 										<div
 											className='mini-description'
@@ -127,7 +127,7 @@ export default function WorkGrid({
 													.projectMiniDescription,
 											}}
 										/>
-										<p>
+										<p className='d-flex flex-fill flex-column align-items-start justify-content-end'>
 											<a
 												href='#'
 												className='btn stretched-link btn-link btn-link-sm'
