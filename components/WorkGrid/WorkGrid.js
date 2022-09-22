@@ -40,8 +40,18 @@ export default function WorkGrid({
 								>
 									<div className='featured-work-image'>
 										<img
-											src={fpo1.src}
-											alt='Featured Work'
+											srcSet={
+												el.node.featuredImage?.node
+													.srcSet
+											}
+											src={
+												el.node.featuredImage?.node
+													.sourceUrl
+											}
+											alt={
+												el.node.featuredImage?.node
+													.altText
+											}
 											className='img-fluid'
 										/>
 									</div>
@@ -87,11 +97,48 @@ export default function WorkGrid({
 					{work.map((el) => {
 						return (
 							<div
-								className='g-col-12 g-col-6 work-item'
+								className='g-col-12 g-col-md-6 work-item'
 								key={el.node.slug}
 							>
-								<div className='work-description'>
-									<h3>{el.node.caseStudyTitle}</h3>
+								<div className='card'>
+									<div className='work-image'>
+										<img
+											srcSet={
+												el.node.featuredImage?.node
+													.srcSet
+											}
+											src={
+												el.node.featuredImage?.node
+													.sourceUrl
+											}
+											alt={
+												el.node.featuredImage?.node
+													.altText
+											}
+											className='img-fluid'
+										/>
+									</div>
+									<div className='work-description'>
+										<h3>{el.node.caseStudyTitle}</h3>
+										<div
+											className='mini-description'
+											dangerouslySetInnerHTML={{
+												__html: el.node
+													.projectMiniDescription,
+											}}
+										/>
+										<p>
+											<a
+												href='#'
+												className='btn stretched-link btn-link btn-link-sm'
+											>
+												View Project{' '}
+												<FontAwesomeIcon
+													icon={faArrowRight}
+												/>
+											</a>
+										</p>
+									</div>
 								</div>
 							</div>
 						);
@@ -223,7 +270,7 @@ export default function WorkGrid({
 					</div>
 				</div>
 			</div>
-			{work.map((post) => {
+			{/* work.map((post) => {
 				const locations = post.node.caseStudyFeedLocations.nodes;
 				return (
 					<h1 key={post.node.slug}>
@@ -234,7 +281,7 @@ export default function WorkGrid({
 						location
 					</h1>
 				);
-			})}
+			}) */}
 		</section>
 	);
 }
