@@ -2,10 +2,10 @@ import Nav from '../Nav';
 
 // import styles from 'TemplateHeader.module.scss';
 
-const TemplateHeader = ({ children, className }) => {
+const TemplateHeader = ({ pageCheck, children, className }) => {
 	return (
 		<header id='main-header' className={`${className}`}>
-			<Nav />
+			<Nav currPage={pageCheck} />
 			{children}
 		</header>
 	);

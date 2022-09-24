@@ -7,17 +7,19 @@ import SkillsList from '../components/SkillsList';
 import ContactInfo from '../components/ContactInfo';
 import Footer from '../components/Footer';
 // import PostCard from '../components/PostCard';
-import { getAllPosts } from '../lib/test-data';
-import { GET_WORK } from '../lib/work';
 import { getWorks, getSingleFeaturedWork } from '../lib/work';
 
-export default function Home({ posts, singleFeatWork, work }) {
+export default function Home({ posts, pageSlug, singleFeatWork, work }) {
+	// const currentPage = 'home';
 	return (
 		<>
 			<Head>
 				<title>Headless WP Next Starter</title>
 			</Head>
-			<TemplateHeader className='position-absolute w-100 top-0 start-0' />
+			<TemplateHeader
+				pageCheck={pageSlug}
+				className='position-absolute w-100 top-0 start-0'
+			/>
 			<HomeHero />
 			<ServiceSlider />
 			<WorkGrid featWork={singleFeatWork} work={work} />
@@ -56,13 +58,14 @@ export async function getStaticProps() {
 	// 	query: GET_WORK,
 	// });
 	// const work = workresponse?.data?.caseStudies?.edges;
-
+	const pageSlug = 'home';
 	const work = await getWorks();
 	const singleFeatWork = await getSingleFeaturedWork();
 
 	return {
 		props: {
 			// posts,
+			pageSlug,
 			work,
 			singleFeatWork,
 		},

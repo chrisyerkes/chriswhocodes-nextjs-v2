@@ -10,11 +10,23 @@ import Section from '../Section';
 // import styles from './Nav.module.scss';
 import NavListItem from '../NavListItem';
 
-const Nav = () => {
+const Nav = (props) => {
+	function PageCheck() {
+		if (props.currPage != 'home') {
+			return (
+				<a className='navbar-brand' href='/'>
+					Chris Yerkes
+				</a>
+			);
+		} else {
+			return null;
+		}
+	}
 	return (
 		<>
 			<nav className='navbar navbar-expand-md'>
 				<div className='container'>
+					<PageCheck />
 					<button
 						className='navbar-toggler'
 						type='button'
