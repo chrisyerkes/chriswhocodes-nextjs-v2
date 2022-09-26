@@ -8,6 +8,58 @@ import Footer from '../../components/Footer';
 import { getCaseStudy } from '../../lib/individual-case-study';
 
 export default function SlugPage({ caseStudy }) {
+	const images = caseStudy?.imageGallery;
+
+	if (images?.length > 0) {
+		var galleryCheck = true;
+	} else {
+		var galleryCheck = false;
+	}
+	function GalleryExists(props) {
+		const exists = props.exists;
+		const allimages = props.images;
+		const set = props.set;
+
+		// function evenImagesArr(images) {
+		let evens = [];
+		allimages.forEach((el, i) => {
+			if (i % 2 === 1) {
+				// console.log(el[i]);
+				evens.push(el[i]);
+			}
+		});
+		// return evens;
+		// if (parseInt(el[i]) % 2 === 0) {
+		// 	evens.push(el);
+		// }
+		// console.log(el);
+		// return evens;
+		// }
+		// console.log(evenImages(images));
+
+		// const evenImages = images.map(evenImagesArr);
+		if (exists) {
+			if (set === 'even') {
+				return (
+					<ul>
+						{evens.map((image) => {
+							return <li key={image.id}>{image.sourceUrl}</li>;
+						})}
+					</ul>
+				);
+			} else {
+				return (
+					<ul>
+						{images.map((image) => {
+							return <li key={image.id}>{image.sourceUrl}</li>;
+						})}
+					</ul>
+				);
+			}
+		} else {
+			return <p>I do not exist</p>;
+		}
+	}
 	return (
 		<>
 			<Head>
@@ -61,7 +113,7 @@ export default function SlugPage({ caseStudy }) {
 			</section>
 			<section className='content-section project-goals'>
 				<div className='container'>
-					<div className='row'>
+					<div className='row content-section'>
 						<div className='col project-goals-featured-image'>
 							<img
 								srcSet={caseStudy?.mainImage?.srcSet}
@@ -71,13 +123,31 @@ export default function SlugPage({ caseStudy }) {
 							/>
 						</div>
 					</div>
-					<div className='row'>
+					<div className='row content-section'>
 						<article
 							className='col-10 project-goals-text'
 							dangerouslySetInnerHTML={{
 								__html: caseStudy?.projectGoals,
 							}}
 						></article>
+					</div>
+					<div className='row content-section'>
+						<article
+							className='col-10 project-technology-text'
+							dangerouslySetInnerHTML={{
+								__html: caseStudy?.projectTechnology,
+							}}
+						></article>
+					</div>
+					<div className='row content-section'>
+						<div className='col-6'>
+							<GalleryExists
+								exists={galleryCheck}
+								images={images}
+								set='even'
+							/>
+						</div>
+						<div className='col-6'></div>
 					</div>
 				</div>
 			</section>
@@ -88,60 +158,6 @@ export default function SlugPage({ caseStudy }) {
 }
 
 export async function getStaticProps({ params }) {
-	// const GET_CASE_STUDY = gql`
-	// 	query GetCaseStudyBySlug($id: ID!) {
-	// 		caseStudy(id: $id, idType: URI) {
-	// 			caseStudyTitle
-	// 			projectMiniDescription
-	// 			introduction
-	// 			industry
-	// 			stack
-	// 			projectLink
-	// 			mainImage {
-	// 				altText
-	// 				srcSet(size: LARGE)
-	// 				sourceUrl
-	// 			}
-	// 			projectGoals
-	// 			projectTechnology
-	// 			imageGallery {
-	// 				altText
-	// 				caption
-	// 				sourceUrl
-	// 				srcSet
-	// 			}
-	// 			developmentProcess
-	// 			finalImage {
-	// 				altText
-	// 				sourceUrl(size: LARGE)
-	// 				srcSet(size: LARGE)
-	// 			}
-	// 			results
-	// 			otherProjects {
-	// 				edges {
-	// 					node {
-	// 						caseStudyTitle
-	// 						featuredImage {
-	// 							node {
-	// 								altText
-	// 								sourceUrl
-	// 								srcSet
-	// 							}
-	// 						}
-	// 						slug
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// `;
-	// const response = await client.query({
-	// 	query: GET_CASE_STUDY,
-	// 	variables: {
-	// 		id: params.uri,
-	// 	},
-	// });
-	// const caseStudy = response?.data?.caseStudy;
 	const caseStudy = await getCaseStudy(params);
 
 	return {
