@@ -8,8 +8,15 @@ import ContactInfo from '../components/ContactInfo';
 import Footer from '../components/Footer';
 // import PostCard from '../components/PostCard';
 import { getWorks, getSingleFeaturedWork } from '../lib/work';
+import { getPrimaryMenu } from '../lib/menus';
 
-export default function Home({ posts, pageSlug, singleFeatWork, work }) {
+export default function Home({
+	posts,
+	pageSlug,
+	singleFeatWork,
+	work,
+	primaryMenu,
+}) {
 	// const currentPage = 'home';
 	return (
 		<>
@@ -19,6 +26,7 @@ export default function Home({ posts, pageSlug, singleFeatWork, work }) {
 			<TemplateHeader
 				pageCheck={pageSlug}
 				className='position-absolute w-100 top-0 start-0'
+				currMenu={primaryMenu}
 			/>
 			<HomeHero />
 			<ServiceSlider />
@@ -61,6 +69,7 @@ export async function getStaticProps() {
 	const pageSlug = 'home';
 	const work = await getWorks();
 	const singleFeatWork = await getSingleFeaturedWork();
+	const primaryMenu = await getPrimaryMenu();
 
 	return {
 		props: {
@@ -68,6 +77,7 @@ export async function getStaticProps() {
 			pageSlug,
 			work,
 			singleFeatWork,
+			primaryMenu,
 		},
 	};
 }

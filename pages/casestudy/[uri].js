@@ -6,8 +6,9 @@ import TemplateHeader from '../../components/TemplateHeader';
 import ContactInfo from '../../components/ContactInfo';
 import Footer from '../../components/Footer';
 import { getCaseStudy } from '../../lib/individual-case-study';
+import { getPrimaryMenu } from '../../lib/menus';
 
-export default function SlugPage({ caseStudy }) {
+export default function SlugPage({ caseStudy, primaryMenu }) {
 	const images = caseStudy?.imageGallery;
 	const related = caseStudy?.otherProjects?.edges;
 
@@ -93,7 +94,10 @@ export default function SlugPage({ caseStudy }) {
 			<Head>
 				<title>Headless WP Next Starter</title>
 			</Head>
-			<TemplateHeader className='position-absolute w-100 top-0 start-0' />
+			<TemplateHeader
+				className='position-absolute w-100 top-0 start-0'
+				currMenu={primaryMenu}
+			/>
 			<section className='content-section case-study-header hero'>
 				<div className='container'>
 					<div className='row'>
@@ -266,10 +270,12 @@ export default function SlugPage({ caseStudy }) {
 
 export async function getStaticProps({ params }) {
 	const caseStudy = await getCaseStudy(params);
+	const primaryMenu = await getPrimaryMenu();
 
 	return {
 		props: {
 			caseStudy,
+			primaryMenu,
 		},
 	};
 }

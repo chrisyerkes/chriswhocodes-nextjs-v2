@@ -10,9 +10,32 @@ import Section from '../Section';
 // import styles from './Nav.module.scss';
 import NavListItem from '../NavListItem';
 
-const Nav = (props) => {
+export default function Nav({ currPage, currMenu }) {
+	const menuItems = currMenu[0].node.menuItems?.edges;
+	// Transforms flat list of menu items into tiered list for things like sub menus to work
+	const flatListToHierarchical = (
+		data = [],
+		{ idKey = 'id', parentKey = 'parentId', childrenKey = 'children' } = {}
+	) => {
+		const tree = [];
+		const childrenOf = {};
+		data.forEach((el) => {
+			const item = el.node;
+			const newItem = { ...item };
+			const { [idKey]: id, [parentKey]: parentId = 0 } = newItem;
+			childrenOf[id] = childrenOf[id] || [];
+			newItem[childrenKey] = childrenOf[id];
+			parentId
+				? (childrenOf[parentId] = childrenOf[parentId] || []).push(
+						newItem
+				  )
+				: tree.push(newItem);
+		});
+		return tree;
+	};
+	const hierarchicalMenu = flatListToHierarchical(menuItems);
 	function PageCheck() {
-		if (props.currPage != 'home') {
+		if (currPage != 'home') {
 			return (
 				<a className='navbar-brand' href='/'>
 					Chris Yerkes
@@ -57,16 +80,16 @@ const Nav = (props) => {
 						</div>
 						<div className='offcanvas-body'>
 							<ul className='navbar-nav mx-auto mx-lg-0 ms-lg-auto h-100 main-nav'>
-								{/* {navigation?.map((listItem) => {
+								{hierarchicalMenu?.map((listItem) => {
 									return (
 										<NavListItem
 											key={listItem.id}
 											item={listItem}
 										/>
 									);
-								})} */}
+								})}
 
-								<li className='nav-item'>
+								{/* <li className='nav-item'>
 									<a
 										className='nav-link active'
 										aria-current='page'
@@ -89,7 +112,7 @@ const Nav = (props) => {
 									<a className='nav-link' href='#'>
 										Contact
 									</a>
-								</li>
+								</li> */}
 								{/* <li className='nav-item d-flex align-items-center mt-auto light-switch-wrap'>
 									<button className='light-switch off'>
 										<span className='status-icon'>
@@ -161,6 +184,6 @@ const Nav = (props) => {
       </nav> */}
 		</>
 	);
-};
+}
 
-export default Nav;
+// export default Nav;
