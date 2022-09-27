@@ -9,6 +9,17 @@ import { getCaseStudy } from '../../lib/individual-case-study';
 
 export default function SlugPage({ caseStudy }) {
 	const images = caseStudy?.imageGallery;
+	const related = caseStudy?.otherProjects?.edges;
+
+	let evens = [];
+	let odds = [];
+	images?.map((image, i) => {
+		if (i % 2 === 0) {
+			evens.push(image);
+		} else {
+			odds.push(image);
+		}
+	});
 
 	if (images?.length > 0) {
 		var galleryCheck = true;
@@ -20,38 +31,55 @@ export default function SlugPage({ caseStudy }) {
 		const allimages = props.images;
 		const set = props.set;
 
-		// function evenImagesArr(images) {
-		let evens = [];
-		allimages.forEach((el, i) => {
-			if (i % 2 === 1) {
-				// console.log(el[i]);
-				evens.push(el[i]);
-			}
-		});
-		// return evens;
-		// if (parseInt(el[i]) % 2 === 0) {
-		// 	evens.push(el);
-		// }
-		// console.log(el);
-		// return evens;
-		// }
-		// console.log(evenImages(images));
-
-		// const evenImages = images.map(evenImagesArr);
 		if (exists) {
 			if (set === 'even') {
 				return (
 					<ul>
 						{evens.map((image) => {
-							return <li key={image.id}>{image.sourceUrl}</li>;
+							return (
+								<li key={image.id}>
+									<img
+										src={image.sourceUrl}
+										srcSet={image.srcSet}
+										alt={image.altText}
+										className='img-fluid'
+									/>
+								</li>
+							);
+						})}
+					</ul>
+				);
+			} else if (set === 'odd') {
+				return (
+					<ul>
+						{odds.map((image) => {
+							return (
+								<li key={image.id}>
+									<img
+										src={image.sourceUrl}
+										srcSet={image.srcSet}
+										alt={image.altText}
+										className='img-fluid'
+									/>
+								</li>
+							);
 						})}
 					</ul>
 				);
 			} else {
 				return (
 					<ul>
-						{images.map((image) => {
-							return <li key={image.id}>{image.sourceUrl}</li>;
+						{allimages.map((image) => {
+							return (
+								<li key={image.id}>
+									<img
+										src={image.sourceUrl}
+										srcSet={image.srcSet}
+										alt={image.altText}
+										className='img-fluid'
+									/>
+								</li>
+							);
 						})}
 					</ul>
 				);
@@ -147,7 +175,86 @@ export default function SlugPage({ caseStudy }) {
 								set='even'
 							/>
 						</div>
-						<div className='col-6'></div>
+						<div className='col-6'>
+							<GalleryExists
+								exists={galleryCheck}
+								images={images}
+								set='odd'
+							/>
+						</div>
+					</div>
+					<div className='row content-section'>
+						<article
+							className='col-10 project-development-process-text'
+							dangerouslySetInnerHTML={{
+								__html: caseStudy?.developmentProcess,
+							}}
+						></article>
+					</div>
+					<div className='row content-section'>
+						<div className='col project-goals-featured-image'>
+							<img
+								srcSet={caseStudy?.finalImage?.srcSet}
+								src={caseStudy?.finalImage?.sourceUrl}
+								className='img-fluid'
+								alt={caseStudy?.finalImage?.altText}
+							/>
+						</div>
+					</div>
+					<div className='row content-section'>
+						<article
+							className='col-10 project-results-text'
+							dangerouslySetInnerHTML={{
+								__html: caseStudy?.results,
+							}}
+						></article>
+					</div>
+					<div className='row content-section other-projects'>
+						<h2>Other Projects</h2>
+						{related?.map((project) => {
+							return (
+								<div
+									key={project.node.slug}
+									className='col-6 related-project'
+								>
+									<div className='related-project-image'>
+										<img
+											src={
+												project.node.featuredImage?.node
+													.sourceUrl
+											}
+											srcSet={
+												project.node.featuredImage?.node
+													.srcSet
+											}
+											alt={
+												project.node.featuredImage?.node
+													.altText
+											}
+											className='img-fluid'
+										/>
+									</div>
+									<h3>{project.node.caseStudyTitle}</h3>
+									<article
+										className='project-mini-description'
+										dangerouslySetInnerHTML={{
+											__html: project.node
+												.projectMiniDescription,
+										}}
+									></article>
+									<p>
+										<Link href={project.node.uri}>
+											<a className='btn btn-link btn-link-sm stretched-link has-arrow-right'>
+												View Project{' '}
+												<FontAwesomeIcon
+													icon={faArrowRight}
+												/>
+											</a>
+										</Link>
+									</p>
+								</div>
+							);
+						})}
 					</div>
 				</div>
 			</section>
