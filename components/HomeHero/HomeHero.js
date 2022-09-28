@@ -200,23 +200,33 @@ const HomeHero = ({
 								<h1 className='d-none d-lg-block hero-title animation-toggle'>
 									Chris Yerkes
 								</h1>
-								<p
-									className='hero-subtitle'
-									dangerouslySetInnerHTML={{
-										__html: homeData.heroSubtitle,
-									}}
-								/>
-								<p className='m-0 text-center text-lg-start'>
-									<a
-										href={heroCTA.url}
-										target={heroCTA.target}
-										className='btn btn-link has-arrow-right has-gradient-1'
-									>
-										{heroCTA.title + ' '}
-										<FontAwesomeIcon icon={faArrowRight} />
-										{/* <i className="fa-solid fa-arrow-right"></i> */}
-									</a>
-								</p>
+								{homeData.heroSubtitle && (
+									<p
+										className='hero-subtitle'
+										dangerouslySetInnerHTML={{
+											__html: homeData.heroSubtitle,
+										}}
+									/>
+								)}
+								{heroCTA && (
+									<p className='m-0 text-center text-lg-start'>
+										<a
+											href={heroCTA ? heroCTA.url : null}
+											target={
+												heroCTA ? heroCTA.target : null
+											}
+											className='btn btn-link has-arrow-right has-gradient-1'
+										>
+											{heroCTA.title
+												? heroCTA.title + ' '
+												: 'backup '}
+											<FontAwesomeIcon
+												icon={faArrowRight}
+											/>
+											{/* <i className="fa-solid fa-arrow-right"></i> */}
+										</a>
+									</p>
+								)}
 							</div>
 						</div>
 					</div>
