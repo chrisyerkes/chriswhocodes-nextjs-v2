@@ -126,7 +126,10 @@ const ContactInfo = ({
 							</ul>
 						</div>
 						<div className='col-md-7 col-lg-7 mb-5 mb-md-0 form-container'>
-							<form>
+							<form
+								action='https://formsubmit.co/71a0a09876198c4be70f564838b777a2'
+								method='POST'
+							>
 								<div className='row'>
 									<div className='col-sm-6 mb-4'>
 										<div className='form-floating'>
@@ -135,6 +138,7 @@ const ContactInfo = ({
 												className='form-control'
 												id='inputName1'
 												placeholder='Your name...'
+												name='name'
 											/>
 											<label htmlFor='inputName1'>
 												Your name
@@ -148,6 +152,7 @@ const ContactInfo = ({
 												className='form-control'
 												id='inputEmail1'
 												placeholder='name@example.com'
+												name='email'
 											/>
 											<label htmlFor='inputEmail1'>
 												Your email
@@ -165,6 +170,7 @@ const ContactInfo = ({
 												style={{
 													minHeight: 200 + 'px',
 												}}
+												name='message'
 											></textarea>
 											<label htmlFor='inputMessage1'>
 												Your message
@@ -180,6 +186,7 @@ const ContactInfo = ({
 												type='checkbox'
 												role='switch'
 												id='inputPermission1'
+												name='contact-permission'
 											/>
 											<label
 												htmlFor='inputPermission1'
@@ -194,6 +201,7 @@ const ContactInfo = ({
 												type='checkbox'
 												role='switch'
 												id='inputPermission2'
+												name='newsletter-signup'
 											/>
 											<label
 												htmlFor='inputPermission2'
@@ -207,7 +215,7 @@ const ContactInfo = ({
 										<p className='rgb-button-wrap'>
 											<button
 												type='submit'
-												className='btn btn-gradient has-btn-gradient-2'
+												className='btn btn-gradient has-btn-gradient-2 disabled'
 											>
 												Send a message
 											</button>
@@ -215,6 +223,21 @@ const ContactInfo = ({
 										</p>
 									</div>
 								</div>
+								<input
+									type='hidden'
+									name='_next'
+									value='http://localhost:3000/thank-you'
+								/>
+								<input
+									type='hidden'
+									name='_subject'
+									value='New form submission'
+								/>
+								<input
+									type='text'
+									name='_honey'
+									style={{ display: 'none' }}
+								/>
 							</form>
 						</div>
 					</div>
