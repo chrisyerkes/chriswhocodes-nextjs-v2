@@ -7,17 +7,20 @@ import SkillsList from '../components/SkillsList';
 import ContactInfo from '../components/ContactInfo';
 import Footer from '../components/Footer';
 // import PostCard from '../components/PostCard';
+import { getThemeSettings } from '../lib/theme-settings';
+import { getHomepageData } from '../lib/homepage-data';
 import { getWorks, getSingleFeaturedWork } from '../lib/work';
 import { getPrimaryMenu } from '../lib/menus';
 
 export default function Home({
+	themeSettings,
+	homepageData,
 	posts,
 	pageSlug,
 	singleFeatWork,
 	work,
 	primaryMenu,
 }) {
-	// const currentPage = 'home';
 	return (
 		<>
 			<Head>
@@ -28,26 +31,16 @@ export default function Home({
 				className='position-absolute w-100 top-0 start-0'
 				currMenu={primaryMenu}
 			/>
-			<HomeHero />
-			<ServiceSlider />
-			<WorkGrid featWork={singleFeatWork} work={work} />
-			<SkillsList />
-			<ContactInfo />
-			{/* <main>
-				<h1 className='title'>Headless WordPress Next.js Starter</h1>
-
-				<p className='description'>
-					Get started by editing <code>pages/index.js</code>
-				</p>
-
-				<div className='grid'>
-					{posts.map((post) => {
-						return <PostCard key={post.uri} post={post}></PostCard>;
-					})}
-				</div>
-				</main> */}
-			{/* {console.log(work)} */}
-			<Footer />
+			<HomeHero social={themeSettings} homeData={homepageData} />
+			<ServiceSlider homeData={homepageData} />
+			<WorkGrid
+				featWork={singleFeatWork}
+				work={work}
+				homeData={homepageData}
+			/>
+			<SkillsList homeData={homepageData} />
+			<ContactInfo social={themeSettings} homeData={homepageData} />
+			<Footer social={themeSettings} />
 		</>
 	);
 }
@@ -67,12 +60,16 @@ export async function getStaticProps() {
 	// });
 	// const work = workresponse?.data?.caseStudies?.edges;
 	const pageSlug = 'home';
+	const themeSettings = await getThemeSettings();
+	const homepageData = await getHomepageData();
 	const work = await getWorks();
 	const singleFeatWork = await getSingleFeaturedWork();
 	const primaryMenu = await getPrimaryMenu();
 
 	return {
 		props: {
+			themeSettings,
+			homepageData,
 			// posts,
 			pageSlug,
 			work,

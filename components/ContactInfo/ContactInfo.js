@@ -4,6 +4,7 @@ import me from '../../public/static-assets/images/cropped-square.jpg';
 
 const ContactInfo = ({
 	children,
+	social,
 	className = 'content-section has-tinted-background contact-form',
 }) => {
 	function onClickHandler(e) {
@@ -100,25 +101,41 @@ const ContactInfo = ({
 							</p>
 							<ul className='nav social-nav flex-column flex-sm-row align-items-center text-links'>
 								<li className='nav-item'>
-									<a href='#' className='nav-link'>
+									<a
+										href={social.linkedinProfile}
+										target='_blank'
+										className='nav-link'
+									>
 										LinkedIn{' '}
 										<FontAwesomeIcon icon={faArrowRight} />
 									</a>
 								</li>
 								<li className='nav-item'>
-									<a href='#' className='nav-link'>
+									<a
+										href={social.codepenProfile}
+										target='_blank'
+										className='nav-link'
+									>
 										CodePen{' '}
 										<FontAwesomeIcon icon={faArrowRight} />
 									</a>
 								</li>
 								<li className='nav-item'>
-									<a href='#' className='nav-link'>
+									<a
+										href={social.githubProfile}
+										target='_blank'
+										className='nav-link'
+									>
 										GitHub{' '}
 										<FontAwesomeIcon icon={faArrowRight} />
 									</a>
 								</li>
 								<li className='nav-item'>
-									<a href='#' className='nav-link'>
+									<a
+										href={social.twitterProfile}
+										target='_blank'
+										className='nav-link'
+									>
 										Twitter{' '}
 										<FontAwesomeIcon icon={faArrowRight} />
 									</a>

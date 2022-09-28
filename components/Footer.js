@@ -6,7 +6,7 @@ import {
 	faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 
-export default function Footer() {
+export default function Footer({ social }) {
 	return (
 		<footer id='main-footer'>
 			<div className='container'>
@@ -21,22 +21,38 @@ export default function Footer() {
 					<div className='col-sm-6 footer-social-nav'>
 						<ul className='nav justify-content-center justify-content-sm-end social-nav white-social-nav'>
 							<li className='nav-item linkedin'>
-								<a href='#' className='nav-link'>
+								<a
+									href={social.linkedinProfile}
+									target='_blank'
+									className='nav-link'
+								>
 									<FontAwesomeIcon icon={faLinkedinIn} />
 								</a>
 							</li>
 							<li className='nav-item github'>
-								<a href='#' className='nav-link'>
+								<a
+									href={social.githubProfile}
+									target='_blank'
+									className='nav-link'
+								>
 									<FontAwesomeIcon icon={faGithub} />
 								</a>
 							</li>
 							<li className='nav-item codepen'>
-								<a href='#' className='nav-link'>
+								<a
+									href={social.codepenProfile}
+									target='_blank'
+									className='nav-link'
+								>
 									<FontAwesomeIcon icon={faCodepen} />
 								</a>
 							</li>
 							<li className='nav-item twitter'>
-								<a href='#' className='nav-link'>
+								<a
+									href={social.twitterProfile}
+									target='_blank'
+									className='nav-link'
+								>
 									<FontAwesomeIcon icon={faTwitter} />
 								</a>
 							</li>

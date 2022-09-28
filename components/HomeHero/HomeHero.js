@@ -13,7 +13,13 @@ import ArmLeft from '../../public/static-assets/images/sprites/chris_arm_left.pn
 import ArmRight from '../../public/static-assets/images/sprites/chris_arm_right.png';
 import Body from '../../public/static-assets/images/sprites/chris_body_and_pugs.png';
 
-const HomeHero = ({ children, className = 'content-section hero' }) => {
+const HomeHero = ({
+	children,
+	homeData,
+	social,
+	className = 'content-section hero',
+}) => {
+	const heroCTA = homeData?.heroCta;
 	// Hero animation
 	// animation check script
 	// const animationToggle = document.querySelector('.animation-toggle');
@@ -145,25 +151,41 @@ const HomeHero = ({ children, className = 'content-section hero' }) => {
 						</svg>
 						<ul className='nav social-nav justify-content-end d-md-none d-lg-flex justify-content-lg-start'>
 							<li className='nav-item linkedin'>
-								<a href='#' className='nav-link'>
+								<a
+									href={social.linkedinProfile}
+									target='_blank'
+									className='nav-link'
+								>
 									{/* <i className="fab fa-linkedin-in"></i> */}
 									<FontAwesomeIcon icon={faLinkedinIn} />
 								</a>
 							</li>
 							<li className='nav-item github'>
-								<a href='#' className='nav-link'>
+								<a
+									href={social.githubProfile}
+									target='_blank'
+									className='nav-link'
+								>
 									{/* <i className="fa-brands fa-github"></i> */}
 									<FontAwesomeIcon icon={faGithub} />
 								</a>
 							</li>
 							<li className='nav-item codepen'>
-								<a href='#' className='nav-link'>
+								<a
+									href={social.codepenProfile}
+									target='_blank'
+									className='nav-link'
+								>
 									{/* <i className="fa-brands fa-codepen"></i> */}
 									<FontAwesomeIcon icon={faCodepen} />
 								</a>
 							</li>
 							<li className='nav-item twitter'>
-								<a href='#' className='nav-link'>
+								<a
+									href={social.twitterProfile}
+									target='_blank'
+									className='nav-link'
+								>
 									{/* <i className="fab fa-twitter"></i> */}
 									<FontAwesomeIcon icon={faTwitter} />
 								</a>
@@ -178,17 +200,19 @@ const HomeHero = ({ children, className = 'content-section hero' }) => {
 								<h1 className='d-none d-lg-block hero-title animation-toggle'>
 									Chris Yerkes
 								</h1>
-								<p className='hero-subtitle'>
-									Front end developer specializing in lorem
-									ipsum. I enjoy creating dolor sit amet and
-									experimenting with felis faucibus.
-								</p>
+								<p
+									className='hero-subtitle'
+									dangerouslySetInnerHTML={{
+										__html: homeData.heroSubtitle,
+									}}
+								/>
 								<p className='m-0 text-center text-lg-start'>
 									<a
-										href='#'
+										href={heroCTA.url}
+										target={heroCTA.target}
 										className='btn btn-link has-arrow-right has-gradient-1'
 									>
-										Get in Touch{' '}
+										{heroCTA.title + ' '}
 										<FontAwesomeIcon icon={faArrowRight} />
 										{/* <i className="fa-solid fa-arrow-right"></i> */}
 									</a>

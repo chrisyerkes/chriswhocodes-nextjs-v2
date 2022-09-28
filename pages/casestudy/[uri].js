@@ -5,10 +5,11 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import TemplateHeader from '../../components/TemplateHeader';
 import ContactInfo from '../../components/ContactInfo';
 import Footer from '../../components/Footer';
+import { getThemeSettings } from '../../lib/theme-settings';
 import { getCaseStudy } from '../../lib/individual-case-study';
 import { getPrimaryMenu } from '../../lib/menus';
 
-export default function SlugPage({ caseStudy, primaryMenu }) {
+export default function SlugPage({ themeSettings, caseStudy, primaryMenu }) {
 	const images = caseStudy?.imageGallery;
 	const related = caseStudy?.otherProjects?.edges;
 
@@ -262,18 +263,20 @@ export default function SlugPage({ caseStudy, primaryMenu }) {
 					</div>
 				</div>
 			</section>
-			<ContactInfo />
-			<Footer />
+			<ContactInfo social={themeSettings} />
+			<Footer social={themeSettings} />
 		</>
 	);
 }
 
 export async function getStaticProps({ params }) {
+	const themeSettings = await getThemeSettings();
 	const caseStudy = await getCaseStudy(params);
 	const primaryMenu = await getPrimaryMenu();
 
 	return {
 		props: {
+			themeSettings,
 			caseStudy,
 			primaryMenu,
 		},
