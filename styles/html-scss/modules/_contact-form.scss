@@ -187,6 +187,11 @@
 				transform: translateX(-50%);
 			}
 		}
+		.submit-button {
+			&.disabled {
+				opacity: .25;
+			}
+		}
 	}
 }
 

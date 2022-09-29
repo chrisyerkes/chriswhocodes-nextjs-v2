@@ -1,17 +1,14 @@
+// Implement Paging later
+// https://codesandbox.io/s/mzwmsn
+
 import React from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-// import fpo1 from '../../public/static-assets/images/fpo_featured-work.jpg';
-// import fpo2 from '../../public/static-assets/images/fpo_work-item.jpg';
+import FeaturedWork from '../FeaturedWork/FeaturedWork';
 
-// let featCounter = 0;
-
-// const WorkGrid = ({
-// 	children,
-// 	className = 'content-section has-tinted-background my-work',
-// }) => {
 export default function WorkGrid({
+	homeData,
 	work,
 	featWork,
 	className = 'content-section has-tinted-background my-work',
@@ -21,17 +18,13 @@ export default function WorkGrid({
 			<div className='container'>
 				<div className='row'>
 					<div className='col'>
-						<h2 className='section-title'>View my work</h2>
-						{featWork.map((el) => {
-							// const locations =
-							// 	el.node.caseStudyFeedLocations?.nodes;
-
-							// const featured = locations.filter(
-							// 	(o) => o.slug == 'featured-case-study'
-							// );
-							// This counter method only works client side. Doesn't match server side render, so use graphql query sorting for this instead of using same work query. Dynamic variables in the graphql query should be possible.
-							// if (featured.length >= 1 && featCounter <= 0) {
-							// 	featCounter++;
+						{homeData.workTitle && (
+							<h2 className='section-title'>
+								{homeData.workTitle}
+							</h2>
+						)}
+						{featWork && <FeaturedWork featWork={featWork} />}
+						{/* {featWork.map((el) => {
 							return (
 								<div
 									key={el.node.slug}
@@ -80,7 +73,7 @@ export default function WorkGrid({
 								</div>
 							);
 							// }
-						})}
+						})} */}
 					</div>
 				</div>
 				<div
@@ -135,118 +128,6 @@ export default function WorkGrid({
 							</div>
 						);
 					})}
-					{/* <div className='g-col-12 g-col-md-6 work-item'>
-						<div className='card'>
-							<div className='work-image'>
-								<img
-									src={fpo2.src}
-									alt='Work Item'
-									className='img-fluid'
-								/>
-							</div>
-							<div className='work-description'>
-								<h3>Project Two</h3>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur
-									adipiscing elit. Donec eget ex euismod,
-									scelerisque nisi eu, consectetur nisi.
-								</p>
-								<p>
-									<a
-										href='#'
-										className='btn stretched-link btn-link btn-link-sm'
-									>
-										View Project{' '}
-										<FontAwesomeIcon icon={faArrowRight} />
-									</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div className='g-col-12 g-col-md-6 work-item'>
-						<div className='card'>
-							<div className='work-image'>
-								<img
-									src={fpo2.src}
-									alt='Work Item'
-									className='img-fluid'
-								/>
-							</div>
-							<div className='work-description'>
-								<h3>Project Three</h3>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur
-									adipiscing elit. Donec eget ex euismod,
-									scelerisque nisi eu, consectetur nisi.
-								</p>
-								<p>
-									<a
-										href='#'
-										className='btn stretched-link btn-link btn-link-sm'
-									>
-										View Project{' '}
-										<FontAwesomeIcon icon={faArrowRight} />
-									</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div className='g-col-12 g-col-md-6 work-item'>
-						<div className='card'>
-							<div className='work-image'>
-								<img
-									src={fpo2.src}
-									alt='Work Item'
-									className='img-fluid'
-								/>
-							</div>
-							<div className='work-description'>
-								<h3>Project Four</h3>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur
-									adipiscing elit. Donec eget ex euismod,
-									scelerisque nisi eu, consectetur nisi.
-								</p>
-								<p>
-									<a
-										href='#'
-										className='btn stretched-link btn-link btn-link-sm'
-									>
-										View Project{' '}
-										<FontAwesomeIcon icon={faArrowRight} />
-									</a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div className='g-col-12 g-col-md-6 work-item'>
-						<div className='card'>
-							<div className='work-image'>
-								<img
-									src={fpo2.src}
-									alt='Work Item'
-									className='img-fluid'
-								/>
-							</div>
-							<div className='work-description'>
-								<h3>Project Five</h3>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur
-									adipiscing elit. Donec eget ex euismod,
-									scelerisque nisi eu, consectetur nisi.
-								</p>
-								<p>
-									<a
-										href='#'
-										className='btn stretched-link btn-link btn-link-sm'
-									>
-										View Project{' '}
-										<FontAwesomeIcon icon={faArrowRight} />
-									</a>
-								</p>
-							</div>
-						</div>
-					</div> */}
 				</div>
 				<div className='row'>
 					<div className='col text-center'>
@@ -262,18 +143,6 @@ export default function WorkGrid({
 					</div>
 				</div>
 			</div>
-			{/* work.map((post) => {
-				const locations = post.node.caseStudyFeedLocations.nodes;
-				return (
-					<h1 key={post.node.slug}>
-						{post.node.caseStudyTitle} in the{' '}
-						{locations.map((location) => {
-							return location.slug;
-						})}{' '}
-						location
-					</h1>
-				);
-			}) */}
 		</section>
 	);
 }

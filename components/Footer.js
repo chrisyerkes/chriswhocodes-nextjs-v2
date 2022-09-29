@@ -19,44 +19,69 @@ export default function Footer({ social }) {
 						</p>
 					</div>
 					<div className='col-sm-6 footer-social-nav'>
-						<ul className='nav justify-content-center justify-content-sm-end social-nav white-social-nav'>
-							<li className='nav-item linkedin'>
-								<a
-									href={social.linkedinProfile}
-									target='_blank'
-									className='nav-link'
-								>
-									<FontAwesomeIcon icon={faLinkedinIn} />
-								</a>
-							</li>
-							<li className='nav-item github'>
-								<a
-									href={social.githubProfile}
-									target='_blank'
-									className='nav-link'
-								>
-									<FontAwesomeIcon icon={faGithub} />
-								</a>
-							</li>
-							<li className='nav-item codepen'>
-								<a
-									href={social.codepenProfile}
-									target='_blank'
-									className='nav-link'
-								>
-									<FontAwesomeIcon icon={faCodepen} />
-								</a>
-							</li>
-							<li className='nav-item twitter'>
-								<a
-									href={social.twitterProfile}
-									target='_blank'
-									className='nav-link'
-								>
-									<FontAwesomeIcon icon={faTwitter} />
-								</a>
-							</li>
-						</ul>
+						{(social.linkedinProfile ||
+							social.linkedinProfile === null) &&
+							(social.githubProfile ||
+								social.githubProfile === null) &&
+							(social.codepenProfile ||
+								social.codepenProfile === null) &&
+							(social.twitterProfile ||
+								social.twitterProfile === null) && (
+								<ul className='nav justify-content-center justify-content-sm-end social-nav white-social-nav'>
+									{social.linkedinProfile && (
+										<li className='nav-item linkedin'>
+											<a
+												href={social.linkedinProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												<FontAwesomeIcon
+													icon={faLinkedinIn}
+												/>
+											</a>
+										</li>
+									)}
+									{social.githubProfile && (
+										<li className='nav-item github'>
+											<a
+												href={social.githubProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												<FontAwesomeIcon
+													icon={faGithub}
+												/>
+											</a>
+										</li>
+									)}
+									{social.codepenProfile && (
+										<li className='nav-item codepen'>
+											<a
+												href={social.codepenProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												<FontAwesomeIcon
+													icon={faCodepen}
+												/>
+											</a>
+										</li>
+									)}
+									{social.twitterProfile && (
+										<li className='nav-item twitter'>
+											<a
+												href={social.twitterProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												<FontAwesomeIcon
+													icon={faTwitter}
+												/>
+											</a>
+										</li>
+									)}
+								</ul>
+							)}
 					</div>
 				</div>
 			</div>

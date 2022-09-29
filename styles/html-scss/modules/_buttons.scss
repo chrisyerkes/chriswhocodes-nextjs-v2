@@ -61,7 +61,7 @@
 			1.1px 2.2px 3.6px rgba(46, 52, 68, 0.084),
 			1.8px 9px 16px rgba(46, 52, 68, 0.22);
 		z-index: 2;
-		transition: box-shadow 0.25s, transform 0.25s, background-size 0.5s;
+		transition: box-shadow 0.25s, transform 0.25s, background-size 0.5s, opacity 0.25s;
 		
 		&:hover {
 			transform: translate3d(0,-5px,0);
@@ -97,47 +97,50 @@
 // RGB Button Hover Effect
 .rgb-button-wrap {
 	margin: 0;
-	position: relative;
-	display: inline-block;
 
-	span,
-	span::before,
-	span::after {
-		opacity: 0;
-		content: '';
-		position: absolute;
-		top: 50%;
-		border-radius: 50%;
-		width: calc(100% - 30px);
-		height: 50%;
-		z-index: 1;
-		transition: opacity 0.15s;
-		transform: translateY(-50%);
-		animation: gradientbg 2s linear infinite;
-	}
-	span {
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		transform: none;
-	}
-	span::before {
-		background: #ff3b8d;
-		left: -15px;
-		box-shadow: 30px 20px 0 #07b2ff;
-	}
-	span::after {
-		background: #8dff08;
-		right: -15px;
-		box-shadow: -30px -20px 0 #ffeb3b;
-	}
-	&:hover,
-	&:active {
+	&:not(.disabled) {
+		position: relative;
+		display: inline-block;
+
 		span,
 		span::before,
 		span::after {
-			opacity: 1;
+			opacity: 0;
+			content: '';
+			position: absolute;
+			top: 50%;
+			border-radius: 50%;
+			width: calc(100% - 30px);
+			height: 50%;
+			z-index: 1;
+			transition: opacity 0.15s;
+			transform: translateY(-50%);
+			animation: gradientbg 2s linear infinite;
+		}
+		span {
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			transform: none;
+		}
+		span::before {
+			background: #ff3b8d;
+			left: -15px;
+			box-shadow: 30px 20px 0 #07b2ff;
+		}
+		span::after {
+			background: #8dff08;
+			right: -15px;
+			box-shadow: -30px -20px 0 #ffeb3b;
+		}
+		&:hover,
+		&:active {
+			span,
+			span::before,
+			span::after {
+				opacity: 1;
+			}
 		}
 	}
 }

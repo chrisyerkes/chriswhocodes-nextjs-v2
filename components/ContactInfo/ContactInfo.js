@@ -4,9 +4,18 @@ import me from '../../public/static-assets/images/cropped-square.jpg';
 
 const ContactInfo = ({
 	children,
+	homeData,
 	social,
 	className = 'content-section has-tinted-background contact-form',
 }) => {
+	function confirmConsent(e) {
+		const consentTog = document.querySelector('#inputPermission1');
+		const submitBtnWrap = document.querySelector('.submit-button-wrap');
+		const submitBtn = document.querySelector('.submit-button');
+		consentTog.classList.toggle('clicked');
+		submitBtn.classList.toggle('disabled');
+		submitBtnWrap.classList.toggle('disabled');
+	}
 	function onClickHandler(e) {
 		e.preventDefault;
 		// Animated portrait
@@ -80,13 +89,15 @@ const ContactInfo = ({
 		<>
 			<section className={className}>
 				<div className='container'>
-					<div className='row'>
-						<div className='col text-center'>
-							<h2 className='section-title'>
-								Let&rsquo;s build something together
-							</h2>
+					{homeData.contactTitle && (
+						<div className='row'>
+							<div className='col text-center'>
+								<h2 className='section-title'>
+									Let&rsquo;s build something together
+								</h2>
+							</div>
 						</div>
-					</div>
+					)}
 					<div className='row justify-content-between flex-column-reverse flex-md-row'>
 						<div
 							className='col-md-4 col-lg-4 contact-photo'
@@ -99,48 +110,75 @@ const ContactInfo = ({
 									alt='Photo of me, Chris Yerkes'
 								/>
 							</p>
-							<ul className='nav social-nav flex-column flex-sm-row align-items-center text-links'>
-								<li className='nav-item'>
-									<a
-										href={social.linkedinProfile}
-										target='_blank'
-										className='nav-link'
-									>
-										LinkedIn{' '}
-										<FontAwesomeIcon icon={faArrowRight} />
-									</a>
-								</li>
-								<li className='nav-item'>
-									<a
-										href={social.codepenProfile}
-										target='_blank'
-										className='nav-link'
-									>
-										CodePen{' '}
-										<FontAwesomeIcon icon={faArrowRight} />
-									</a>
-								</li>
-								<li className='nav-item'>
-									<a
-										href={social.githubProfile}
-										target='_blank'
-										className='nav-link'
-									>
-										GitHub{' '}
-										<FontAwesomeIcon icon={faArrowRight} />
-									</a>
-								</li>
-								<li className='nav-item'>
-									<a
-										href={social.twitterProfile}
-										target='_blank'
-										className='nav-link'
-									>
-										Twitter{' '}
-										<FontAwesomeIcon icon={faArrowRight} />
-									</a>
-								</li>
-							</ul>
+							{(social.linkedinProfile ||
+								social.linkedinProfile === null) &&
+								(social.githubProfile ||
+									social.githubProfile === null) &&
+								(social.codepenProfile ||
+									social.codepenProfile === null) &&
+								(social.twitterProfile ||
+									social.twitterProfile === null) && (
+									<ul className='nav social-nav flex-column flex-sm-row align-items-center text-links'>
+										{social.linkedinProfile && (
+											<li className='nav-item'>
+												<a
+													href={
+														social.linkedinProfile
+													}
+													target='_blank'
+													className='nav-link'
+												>
+													LinkedIn{' '}
+													<FontAwesomeIcon
+														icon={faArrowRight}
+													/>
+												</a>
+											</li>
+										)}
+										{social.codepenProfile && (
+											<li className='nav-item'>
+												<a
+													href={social.codepenProfile}
+													target='_blank'
+													className='nav-link'
+												>
+													CodePen{' '}
+													<FontAwesomeIcon
+														icon={faArrowRight}
+													/>
+												</a>
+											</li>
+										)}
+										{social.githubProfile && (
+											<li className='nav-item'>
+												<a
+													href={social.githubProfile}
+													target='_blank'
+													className='nav-link'
+												>
+													GitHub{' '}
+													<FontAwesomeIcon
+														icon={faArrowRight}
+													/>
+												</a>
+											</li>
+										)}
+										{social.twitterProfile && (
+											<li className='nav-item'>
+												<a
+													href={social.twitterProfile}
+													target='_blank'
+													className='nav-link'
+												>
+													Twitter{' '}
+													<FontAwesomeIcon
+														icon={faArrowRight}
+													/>
+												</a>
+											</li>
+										)}
+									</ul>
+								)}
 						</div>
 						<div className='col-md-7 col-lg-7 mb-5 mb-md-0 form-container'>
 							<form
@@ -204,12 +242,13 @@ const ContactInfo = ({
 												role='switch'
 												id='inputPermission1'
 												name='contact-permission'
+												onClick={confirmConsent}
 											/>
 											<label
 												htmlFor='inputPermission1'
 												className='form-check-label'
 											>
-												I agree to being contacted
+												I agree to being contacted *
 											</label>
 										</div>
 										<div className='form-check form-switch mb-4'>
@@ -229,10 +268,10 @@ const ContactInfo = ({
 												(optional)
 											</label>
 										</div>
-										<p className='rgb-button-wrap'>
+										<p className='rgb-button-wrap submit-button-wrap disabled'>
 											<button
 												type='submit'
-												className='btn btn-gradient has-btn-gradient-2 disabled'
+												className='btn btn-gradient has-btn-gradient-2 submit-button disabled'
 											>
 												Send a message
 											</button>

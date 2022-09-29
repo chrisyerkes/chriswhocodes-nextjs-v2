@@ -149,48 +149,73 @@ const HomeHero = ({
 								</linearGradient>
 							</defs>
 						</svg>
-						<ul className='nav social-nav justify-content-end d-md-none d-lg-flex justify-content-lg-start'>
-							<li className='nav-item linkedin'>
-								<a
-									href={social.linkedinProfile}
-									target='_blank'
-									className='nav-link'
-								>
-									{/* <i className="fab fa-linkedin-in"></i> */}
-									<FontAwesomeIcon icon={faLinkedinIn} />
-								</a>
-							</li>
-							<li className='nav-item github'>
-								<a
-									href={social.githubProfile}
-									target='_blank'
-									className='nav-link'
-								>
-									{/* <i className="fa-brands fa-github"></i> */}
-									<FontAwesomeIcon icon={faGithub} />
-								</a>
-							</li>
-							<li className='nav-item codepen'>
-								<a
-									href={social.codepenProfile}
-									target='_blank'
-									className='nav-link'
-								>
-									{/* <i className="fa-brands fa-codepen"></i> */}
-									<FontAwesomeIcon icon={faCodepen} />
-								</a>
-							</li>
-							<li className='nav-item twitter'>
-								<a
-									href={social.twitterProfile}
-									target='_blank'
-									className='nav-link'
-								>
-									{/* <i className="fab fa-twitter"></i> */}
-									<FontAwesomeIcon icon={faTwitter} />
-								</a>
-							</li>
-						</ul>
+						{(social.linkedinProfile ||
+							social.linkedinProfile === null) &&
+							(social.githubProfile ||
+								social.githubProfile === null) &&
+							(social.codepenProfile ||
+								social.codepenProfile === null) &&
+							(social.twitterProfile ||
+								social.twitterProfile === null) && (
+								<ul className='nav social-nav justify-content-end d-md-none d-lg-flex justify-content-lg-start'>
+									{social.linkedinProfile && (
+										<li className='nav-item linkedin'>
+											<a
+												href={social.linkedinProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												{/* <i className="fab fa-linkedin-in"></i> */}
+												<FontAwesomeIcon
+													icon={faLinkedinIn}
+												/>
+											</a>
+										</li>
+									)}
+									{social.githubProfile && (
+										<li className='nav-item github'>
+											<a
+												href={social.githubProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												{/* <i className="fa-brands fa-github"></i> */}
+												<FontAwesomeIcon
+													icon={faGithub}
+												/>
+											</a>
+										</li>
+									)}
+									{social.codepenProfile && (
+										<li className='nav-item codepen'>
+											<a
+												href={social.codepenProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												{/* <i className="fa-brands fa-codepen"></i> */}
+												<FontAwesomeIcon
+													icon={faCodepen}
+												/>
+											</a>
+										</li>
+									)}
+									{social.twitterProfile && (
+										<li className='nav-item twitter'>
+											<a
+												href={social.twitterProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												{/* <i className="fab fa-twitter"></i> */}
+												<FontAwesomeIcon
+													icon={faTwitter}
+												/>
+											</a>
+										</li>
+									)}
+								</ul>
+							)}
 					</div>
 				</div>
 				<div className='row row-cols-1 row-cols-lg-2 align-items-center'>
@@ -223,7 +248,6 @@ const HomeHero = ({
 											<FontAwesomeIcon
 												icon={faArrowRight}
 											/>
-											{/* <i className="fa-solid fa-arrow-right"></i> */}
 										</a>
 									</p>
 								)}
@@ -265,32 +289,73 @@ const HomeHero = ({
 							<div className='pug pug-henry'></div>
 							<div className='pug pug-peppa'></div>
 						</div>
-						<ul className='nav social-nav d-none d-md-flex d-lg-none justify-content-center'>
-							<li className='nav-item linkedin'>
-								<a href='#' className='nav-link'>
-									{/* <i className="fab fa-linkedin-in"></i> */}
-									<FontAwesomeIcon icon={faLinkedinIn} />
-								</a>
-							</li>
-							<li className='nav-item github'>
-								<a href='#' className='nav-link'>
-									{/* <i className="fa-brands fa-github"></i> */}
-									<FontAwesomeIcon icon={faGithub} />
-								</a>
-							</li>
-							<li className='nav-item codepen'>
-								<a href='#' className='nav-link'>
-									{/* <i className="fa-brands fa-codepen"></i> */}
-									<FontAwesomeIcon icon={faCodepen} />
-								</a>
-							</li>
-							<li className='nav-item twitter'>
-								<a href='#' className='nav-link'>
-									{/* <i className="fab fa-twitter"></i> */}
-									<FontAwesomeIcon icon={faTwitter} />
-								</a>
-							</li>
-						</ul>
+						{(social.linkedinProfile ||
+							social.linkedinProfile === null) &&
+							(social.githubProfile ||
+								social.githubProfile === null) &&
+							(social.codepenProfile ||
+								social.codepenProfile === null) &&
+							(social.twitterProfile ||
+								social.twitterProfile === null) && (
+								<ul className='nav social-nav d-none d-md-flex d-lg-none justify-content-center'>
+									{social.linkedinProfile && (
+										<li className='nav-item linkedin'>
+											<a
+												href={social.linkedinProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												{/* <i className="fab fa-linkedin-in"></i> */}
+												<FontAwesomeIcon
+													icon={faLinkedinIn}
+												/>
+											</a>
+										</li>
+									)}
+									{social.githubProfile && (
+										<li className='nav-item github'>
+											<a
+												href={social.githubProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												{/* <i className="fa-brands fa-github"></i> */}
+												<FontAwesomeIcon
+													icon={faGithub}
+												/>
+											</a>
+										</li>
+									)}
+									{social.codepenProfile && (
+										<li className='nav-item codepen'>
+											<a
+												href={social.codepenProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												{/* <i className="fa-brands fa-codepen"></i> */}
+												<FontAwesomeIcon
+													icon={faCodepen}
+												/>
+											</a>
+										</li>
+									)}
+									{social.twitterProfile && (
+										<li className='nav-item twitter'>
+											<a
+												href={social.twitterProfile}
+												target='_blank'
+												className='nav-link'
+											>
+												{/* <i className="fab fa-twitter"></i> */}
+												<FontAwesomeIcon
+													icon={faTwitter}
+												/>
+											</a>
+										</li>
+									)}
+								</ul>
+							)}
 					</div>
 				</div>
 			</div>
