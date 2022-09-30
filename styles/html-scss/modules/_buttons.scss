@@ -97,11 +97,10 @@
 // RGB Button Hover Effect
 .rgb-button-wrap {
 	margin: 0;
+	position: relative;
+	display: inline-block;
 
 	&:not(.disabled) {
-		position: relative;
-		display: inline-block;
-
 		span,
 		span::before,
 		span::after {
