@@ -38,7 +38,7 @@ const flickityOptions = {
 	},
 };
 
-const SkillSlider = ({
+const ServiceSlider = ({
 	children,
 	serviceData,
 	homeData,
@@ -134,4 +134,4 @@ const SkillSlider = ({
 	);
 };
 
-export default SkillSlider;
+export default ServiceSlider;

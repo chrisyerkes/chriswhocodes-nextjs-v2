@@ -20,6 +20,7 @@
 				z-index: 1;
 				transition: opacity 0.15s;
 				transform: translateY(-50%);
+				filter: blur(13px);
 				animation: socialgradientbg 2s linear infinite;
 			}
 			&::before {

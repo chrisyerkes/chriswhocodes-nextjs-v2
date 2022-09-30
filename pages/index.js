@@ -15,6 +15,7 @@ import {
 	getSingleFeaturedWork,
 	getFirstFourWorks,
 } from '../lib/work';
+import { getAllSkills } from '../lib/skills';
 import { getPrimaryMenu } from '../lib/menus';
 
 export default function Home({
@@ -26,6 +27,7 @@ export default function Home({
 	singleFeatWork,
 	firstFourWorks,
 	work,
+	skills,
 	primaryMenu,
 }) {
 	return (
@@ -45,7 +47,7 @@ export default function Home({
 				work={firstFourWorks}
 				homeData={homepageData}
 			/>
-			<SkillsList homeData={homepageData} />
+			<SkillsList homeData={homepageData} skillList={skills} />
 			<ContactInfo social={themeSettings} homeData={homepageData} />
 			<Footer social={themeSettings} />
 		</>
@@ -73,6 +75,7 @@ export async function getStaticProps() {
 	const work = await getWorks();
 	const singleFeatWork = await getSingleFeaturedWork();
 	const firstFourWorks = await getFirstFourWorks();
+	const skills = await getAllSkills();
 	const primaryMenu = await getPrimaryMenu();
 
 	return {
@@ -85,6 +88,7 @@ export async function getStaticProps() {
 			work,
 			singleFeatWork,
 			firstFourWorks,
+			skills,
 			primaryMenu,
 		},
 	};
