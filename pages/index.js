@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 // import PostCard from '../components/PostCard';
 import { getThemeSettings } from '../lib/theme-settings';
 import { getHomepageData } from '../lib/homepage-data';
+import { getAllServices } from '../lib/services';
 import {
 	getWorks,
 	getSingleFeaturedWork,
@@ -21,6 +22,7 @@ export default function Home({
 	homepageData,
 	posts,
 	pageSlug,
+	services,
 	singleFeatWork,
 	firstFourWorks,
 	work,
@@ -37,7 +39,7 @@ export default function Home({
 				currMenu={primaryMenu}
 			/>
 			<HomeHero social={themeSettings} homeData={homepageData} />
-			<ServiceSlider homeData={homepageData} />
+			<ServiceSlider homeData={homepageData} serviceData={services} />
 			<WorkGrid
 				featWork={singleFeatWork}
 				work={firstFourWorks}
@@ -67,6 +69,7 @@ export async function getStaticProps() {
 	const pageSlug = 'home';
 	const themeSettings = await getThemeSettings();
 	const homepageData = await getHomepageData();
+	const services = await getAllServices();
 	const work = await getWorks();
 	const singleFeatWork = await getSingleFeaturedWork();
 	const firstFourWorks = await getFirstFourWorks();
@@ -78,6 +81,7 @@ export async function getStaticProps() {
 			homepageData,
 			// posts,
 			pageSlug,
+			services,
 			work,
 			singleFeatWork,
 			firstFourWorks,
