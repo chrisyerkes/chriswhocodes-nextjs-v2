@@ -1,6 +1,10 @@
 #main-header {
 	z-index: 100;
 
+	.navbar-brand {
+		font-family: $font-family-serif;
+		@include font-size(32px);
+	}
 	@include media-breakpoint-down(md) {
 		pointer-events: none;
 

@@ -150,10 +150,10 @@ export default function SlugPage({
 					</div>
 				</div>
 			</section>
-			<section className='content-section project-goals'>
+			<section className='content-section case-study-featured-image'>
 				<div className='container'>
 					<div className='row content-section'>
-						<div className='col project-goals-featured-image'>
+						<div className='col project-featured-image'>
 							<img
 								srcSet={caseStudy?.mainImage?.srcSet}
 								src={caseStudy?.mainImage?.sourceUrl}
@@ -162,6 +162,10 @@ export default function SlugPage({
 							/>
 						</div>
 					</div>
+				</div>
+			</section>
+			<section className='content-section project-goals'>
+				<div className='container'>
 					<div className='row content-section'>
 						<article
 							className='col-10 project-goals-text'
