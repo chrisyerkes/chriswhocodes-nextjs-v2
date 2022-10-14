@@ -21,13 +21,15 @@ export default function SlugPage({
 
 	let evens = [];
 	let odds = [];
-	images?.map((image, i) => {
-		if (i % 2 === 0) {
-			evens.push(image);
-		} else {
-			odds.push(image);
-		}
-	});
+	if (images?.length > 0) {
+		images?.map((image, i) => {
+			if (i % 2 === 0) {
+				evens.push(image);
+			} else {
+				odds.push(image);
+			}
+		});
+	}
 
 	if (images?.length > 0) {
 		var galleryCheck = true;
@@ -105,7 +107,7 @@ export default function SlugPage({
 				className='position-absolute w-100 top-0 start-0'
 				currMenu={primaryMenu}
 			/>
-			<section className='content-section case-study-header hero'>
+			<section className='content-section case-study-content-section case-study-header hero'>
 				<div className='container'>
 					<div className='row'>
 						<div className='col'>
@@ -150,7 +152,7 @@ export default function SlugPage({
 					</div>
 				</div>
 			</section>
-			<section className='content-section case-study-featured-image'>
+			<section className='content-section case-study-content-section case-study-featured-image'>
 				<div className='container'>
 					<div className='row content-section'>
 						<div className='col project-featured-image'>
@@ -164,7 +166,7 @@ export default function SlugPage({
 					</div>
 				</div>
 			</section>
-			<section className='content-section project-goals'>
+			<section className='content-section case-study-content-section project-goals'>
 				<div className='container'>
 					<div className='row content-section'>
 						<article

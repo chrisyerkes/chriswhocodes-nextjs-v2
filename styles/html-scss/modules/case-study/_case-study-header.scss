@@ -1,10 +1,12 @@
 .case-study-header {
 	@include padding-bottom(360px);
-	
+	@include padding-top(270px);
+
 	.case-study-title {
 		@include font-size(48px);
 		@include margin-bottom(20px);
 	}
+
 	article {
 		@include font-size(32px);
 		@include margin-bottom(30px);

@@ -1,17 +1,20 @@
 h2 {
 	@include font-size(48px);
-	@include rfs(60px, margin-bottom);
+	@include rfs(30px, margin-bottom);
 }
+
 h3 {
 	@include font-size(32px);
 	font-weight: $font-weight-bold;
 	font-family: $font-family-sans-serif;
 }
+
 h4 {
 	@include font-size(20px);
 	font-family: $font-family-sans-serif;
 	font-weight: $font-weight-bold;
 }
+
 h5 {
 	@include font-size(16px);
 	font-family: $font-family-sans-serif;
@@ -19,4 +22,18 @@ h5 {
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	@include rfs(20px, margin-bottom);
+}
+
+p {
+	@include font-size(20px);
+}
+
+a {
+	color: $cyan;
+	text-decoration: none;
+	transition: 0.1s color;
+
+	&:hover {
+		color: tint-color($cyan, 40%);
+	}
 }

@@ -1,0 +1,15 @@
+.case-study-content-section {
+	article:not(.project-goals-text) {
+		h2 {
+			font-family: $font-family-sans-serif;
+			@include font-size(32px);
+			font-weight: $font-weight-bold;
+		}
+	}
+
+	.project-goals-text {
+		p {
+			@include font-size(32px);
+		}
+	}
+}

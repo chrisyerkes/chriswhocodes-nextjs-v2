@@ -6,6 +6,7 @@
 		.flickity-viewport {
 			overflow: visible;
 		}
+
 		.single-service {
 			width: 270px;
 			@include rfs(24px, margin-right);
@@ -37,23 +38,27 @@
 					background-color: #fff;
 					z-index: 0;
 				}
-				& > * {
+
+				&>* {
 					&:is(p, div, span, h1, h2, h3, h4, h5, h6, img) {
 						position: relative;
 						z-index: 50;
 					}
+
 					&:last-child {
 						margin-bottom: 0;
 					}
 				}
+
 				&:hover {
-					transform: translate3d(0,-6px,0);
+					transform: translate3d(0, -6px, 0);
 					box-shadow:
 						0.3px 0.8px 2px rgba(0, 0, 0, 0.065),
 						0.9px 2.7px 6.7px rgba(0, 0, 0, 0.095),
 						4px 12px 30px rgba(0, 0, 0, 0.16);
 				}
 			}
+
 			.service-icon {
 				@include font-size(40px);
 				line-height: 1;
@@ -70,43 +75,56 @@
 
 				// Minor icon tweaks
 				.fa-wordpress-simple {
-					transform: translate3d(0,1px,0);
+					transform: translate3d(0, 1px, 0);
 				}
+
 				.fa-business-time {
-					transform: translate3d(3px,0,0);
+					transform: translate3d(3px, 0, 0);
 				}
+
 				.fa-code {
-					transform: translate3d(0,1px,0);
+					transform: translate3d(0, 1px, 0);
 				}
+
 				.fa-plug {
-					transform: rotate(45deg) translate3d(.5px,2px,0);
+					transform: rotate(45deg) translate3d(.5px, 2px, 0);
 				}
 			}
+
 			h4 {
 				font-family: $font-family-sans-serif;
 				@include font-size(20px);
 				font-weight: $font-weight-bold;
 			}
+
+			p {
+				@include font-size(16px);
+			}
+
 			&:nth-child(4n + 1) {
 				.card {
 					@include gradient-x($cyan, $teal);
 				}
 			}
+
 			&:nth-child(4n + 2) {
 				.card {
 					@include gradient-x($yellow, $magenta);
 				}
 			}
+
 			&:nth-child(4n + 3) {
 				.card {
 					@include gradient-x($light-blue, $dark-cyan);
 				}
 			}
+
 			&:nth-child(4n + 4) {
 				.card {
 					@include gradient-x($dark-blue, $dark-magenta);
 				}
 			}
+
 			&:last-child {
 				margin-right: 0;
 			}

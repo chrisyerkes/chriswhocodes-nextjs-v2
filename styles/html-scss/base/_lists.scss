@@ -1,18 +1,21 @@
-ul, ol {
+ul,
+ol {
 	padding: 0;
 	list-style: none;
 
-	li {
-		@include font-size(20px);
-		@include padding-left(20px);
-		position: relative;
+	&:not(.main-nav):not(.social-nav):not(.skills-list) {
+		li {
+			@include font-size(20px);
+			@include padding-left(20px);
+			position: relative;
 
-		&::before {
-			content: '\2022';
-			font-size: 22px;
-			position: absolute;
-			left: 0;
-			top: -1px;
+			&::before {
+				content: '\2022';
+				font-size: 22px;
+				position: absolute;
+				left: 0;
+				top: -1px;
+			}
 		}
 	}
 }
