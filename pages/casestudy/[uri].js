@@ -16,7 +16,8 @@ export default function SlugPage({
 	caseStudy,
 	primaryMenu,
 }) {
-	const images = caseStudy?.imageGallery;
+	const images = caseStudy?.miniGallery;
+	const mobileImages = caseStudy?.mobileImageCarousel;
 	const related = caseStudy?.otherProjects?.edges;
 
 	let evens = [];
@@ -95,7 +96,7 @@ export default function SlugPage({
 				);
 			}
 		} else {
-			return <p>I do not exist</p>;
+			return <p>No images</p>;
 		}
 	}
 	return (
@@ -152,20 +153,30 @@ export default function SlugPage({
 					</div>
 				</div>
 			</section>
-			<section className='content-section case-study-content-section case-study-featured-image'>
-				<div className='container'>
-					<div className='row content-section'>
-						<div className='col project-featured-image'>
-							<img
-								srcSet={caseStudy?.mainImage?.srcSet}
-								src={caseStudy?.mainImage?.sourceUrl}
-								className='img-fluid'
-								alt={caseStudy?.mainImage?.altText}
-							/>
+			{caseStudy?.mainImage && (
+				<section className='content-section case-study-content-section case-study-featured-image'>
+					<div className='container'>
+						<div className='row content-section'>
+							<div className='col project-featured-image'>
+								<img
+									srcSet={caseStudy?.mainImage?.srcSet}
+									src={caseStudy?.mainImage?.sourceUrl}
+									className='img-fluid main-image-desktop'
+									alt={caseStudy?.mainImage?.altText}
+								/>
+								{caseStudy.mainMobileImage && (
+									<img
+										srcSet={caseStudy?.mainMobileImage?.srcSet}
+										src={caseStudy?.mainMObileImage?.sourceUrl}
+										className='img-fluid main-image-mobile'
+										alt={caseStudy?.mainMObileImage?.altText}
+									/>
+								)}
+							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			)}
 			<section className='content-section case-study-content-section project-goals'>
 				<div className='container'>
 					<div className='row content-section'>
@@ -173,14 +184,6 @@ export default function SlugPage({
 							className='col-10 project-goals-text'
 							dangerouslySetInnerHTML={{
 								__html: caseStudy?.projectGoals,
-							}}
-						></article>
-					</div>
-					<div className='row content-section'>
-						<article
-							className='col-10 project-technology-text'
-							dangerouslySetInnerHTML={{
-								__html: caseStudy?.projectTechnology,
 							}}
 						></article>
 					</div>
@@ -202,11 +205,26 @@ export default function SlugPage({
 					</div>
 					<div className='row content-section'>
 						<article
+							className='col-10 project-technology-text'
+							dangerouslySetInnerHTML={{
+								__html: caseStudy?.projectTechnology,
+							}}
+						></article>
+					</div>
+					<div className='row content-section'>
+						<article
 							className='col-10 project-development-process-text'
 							dangerouslySetInnerHTML={{
 								__html: caseStudy?.developmentProcess,
 							}}
 						></article>
+					</div>
+					<div className='row content-section'>
+						<div className='col case-study-mobile-slider'>
+							{mobileImages && (
+								<h1>We got mobile images</h1>
+							)}
+						</div>
 					</div>
 					<div className='row content-section'>
 						<div className='col project-goals-featured-image'>
