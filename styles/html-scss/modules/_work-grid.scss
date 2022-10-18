@@ -5,10 +5,12 @@
 		column-gap: 50px !important;
 		row-gap: 30px !important;
 	}
+
 	@include media-breakpoint-down(md) {
 		column-gap: 0 !important;
 		row-gap: 55px !important;
 	}
+
 	.work-item {
 		.card {
 			height: 100%;
@@ -28,6 +30,7 @@
 				width: 100%;
 				height: 8px;
 			}
+
 			&:hover {
 				transform: translate3d(0, -6px, 0);
 				box-shadow:
@@ -35,34 +38,41 @@
 					0.9px 2.7px 6.7px rgba(0, 0, 0, 0.095),
 					4px 12px 30px rgba(0, 0, 0, 0.28);
 			}
+
 			.work-image {
 				aspect-ratio: 518 / 230;
 				overflow: hidden;
+				@include padding-top(8px);
 			}
+
 			.work-description {
 				@include font-size(20px);
 				padding: rfs-fluid-value(30px) rfs-fluid-value(40px);
 
-				& > *:last-child {
+				&>*:last-child {
 					margin-bottom: 0;
 				}
 			}
 		}
+
 		&:nth-child(4n + 1) {
 			.card::before {
 				@include gradient-x($dark-blue, $magenta);
 			}
 		}
+
 		&:nth-child(4n + 2) {
 			.card::before {
 				@include gradient-x($dark-cyan, $light-blue);
 			}
 		}
+
 		&:nth-child(4n + 3) {
 			.card::before {
 				@include gradient-x($cyan, $teal);
 			}
 		}
+
 		&:nth-child(4n + 4) {
 			.card::before {
 				@include gradient-x($yellow, $dark-magenta);

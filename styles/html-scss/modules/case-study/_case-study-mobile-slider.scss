@@ -1,0 +1,39 @@
+.case-study-mobile-slider {
+	overflow: hidden;
+	@include padding-bottom(38px);
+	@include padding-top(10px);
+
+	.mobile-screens-slider {
+		.flickity-viewport {
+			overflow: visible;
+		}
+
+		.single-mobile-screen {
+			width: 375px;
+			height: 667px;
+			@include margin-right(85px);
+
+			.card {
+				overflow: hidden;
+				width: 100%;
+				height: 100%;
+				position: relative;
+				@include rfs(6px, border-radius);
+				cursor: grab;
+				box-shadow:
+					0.3px 0.7px 1.1px rgba(46, 52, 68, 0.036),
+					1.1px 2.2px 3.6px rgba(46, 52, 68, 0.084),
+					1.8px 9px 16px rgba(46, 52, 68, 0.12);
+				transition: box-shadow 0.25s, transform 0.25s;
+
+				&:hover {
+					transform: translate3d(0, -6px, 0);
+					box-shadow:
+						0.3px 0.8px 2px rgba(0, 0, 0, 0.065),
+						0.9px 2.7px 6.7px rgba(0, 0, 0, 0.095),
+						4px 12px 30px rgba(0, 0, 0, 0.16);
+				}
+			}
+		}
+	}
+}

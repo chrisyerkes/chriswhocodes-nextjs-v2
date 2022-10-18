@@ -16,6 +16,7 @@
 		height: 8px;
 		@include gradient-x($cyan, $teal);
 	}
+
 	&:hover {
 		transform: translate3d(0, -6px, 0);
 		box-shadow:
@@ -23,14 +24,17 @@
 			0.9px 2.7px 6.7px rgba(0, 0, 0, 0.095),
 			4px 12px 30px rgba(0, 0, 0, 0.28);
 	}
+
 	.featured-work-image {
 		min-width: 50%;
 		overflow: hidden;
 		aspect-ratio: 558 / 385;
+		@include padding-top(8px);
 
 		@include media-breakpoint-down(md) {
 			min-width: auto;
 		}
+
 		@include media-breakpoint-down(xl) {
 			img {
 				width: 100%;
@@ -40,20 +44,23 @@
 			}
 		}
 	}
+
 	.featured-work-description {
 		color: #fff;
 		background: linear-gradient(217.44deg, $body-color 0%, $body-color 0.01%, $darkened-body-color 100%);
 		padding: rfs-fluid-value(40px) rfs-fluid-value(70px) rfs-fluid-value(40px) rfs-fluid-value(29px);
 		@include font-size(20px);
-		
+
 		@include media-breakpoint-up(lg) {
 			min-width: 420px;
 		}
-		& > .description-wrapper > *:last-child {
+
+		&>.description-wrapper>*:last-child {
 			@include media-breakpoint-down(lg) {
 				margin-bottom: 0;
 			}
 		}
+
 		.btn-link {
 			color: #fff;
 		}

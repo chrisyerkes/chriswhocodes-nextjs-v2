@@ -265,23 +265,37 @@ export default function SlugPage({
 							}}
 						></article>
 					</div>
-					<div className='row content-section'>
-						<div className='col case-study-mobile-slider'>
+				</div>
+			</section>
+			<section className='content-section case-study-content-section case-study-mobile-slider'>
+				<div className="container">
+					<div className='row'>
+						<div className='col case-study-mobile-slider-wrapper'>
 							{mobileImages && (
 								<MobileScreens images={mobileImages} />
 							)}
 						</div>
 					</div>
+				</div>
+			</section>
+			<section className='content-section case-study-content-section has-blue-bg final-image'>
+				<div className="container">
 					<div className='row content-section'>
 						<div className='col project-goals-featured-image'>
-							<img
-								srcSet={caseStudy?.finalImage?.srcSet}
-								src={caseStudy?.finalImage?.sourceUrl}
-								className='img-fluid'
-								alt={caseStudy?.finalImage?.altText}
-							/>
+							<div className='featured-image-wrapper'>
+								<img
+									srcSet={caseStudy?.finalImage?.srcSet}
+									src={caseStudy?.finalImage?.sourceUrl}
+									className='img-fluid'
+									alt={caseStudy?.finalImage?.altText}
+								/>
+							</div>
 						</div>
 					</div>
+				</div>
+			</section>
+			<section className='content-section case-study-content-section project-results'>
+				<div className='container'>
 					<div className='row content-section'>
 						<article
 							className='col-10 project-results-text'
