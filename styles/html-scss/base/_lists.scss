@@ -3,7 +3,7 @@ ol {
 	padding: 0;
 	list-style: none;
 
-	&:not(.main-nav):not(.social-nav):not(.skills-list) {
+	&:not(.main-nav):not(.social-nav):not(.skills-list):not(.case-study-mini-gallery-list) {
 		li {
 			@include font-size(20px);
 			@include padding-left(20px);

@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import Flickity from 'react-flickity-component';
 import TemplateHeader from '../../components/TemplateHeader';
 import ContactInfo from '../../components/ContactInfo';
 import Footer from '../../components/Footer';
@@ -9,6 +10,14 @@ import { getHomepageData } from '../../lib/homepage-data';
 import { getThemeSettings } from '../../lib/theme-settings';
 import { getCaseStudy } from '../../lib/individual-case-study';
 import { getPrimaryMenu } from '../../lib/menus';
+
+const flickityOptions = {
+	cellSelector: '.single-mobile-screen',
+	cellAlign: 'left',
+	contain: true,
+	pageDots: false,
+	prevNextButtons: false,
+};
 
 export default function SlugPage({
 	themeSettings,
@@ -45,7 +54,7 @@ export default function SlugPage({
 		if (exists) {
 			if (set === 'even') {
 				return (
-					<ul>
+					<ul className="case-study-mini-gallery-list evens">
 						{evens.map((image) => {
 							return (
 								<li key={image.id}>
@@ -62,7 +71,7 @@ export default function SlugPage({
 				);
 			} else if (set === 'odd') {
 				return (
-					<ul>
+					<ul className="case-study-mini-gallery-list odds">
 						{odds.map((image) => {
 							return (
 								<li key={image.id}>
@@ -97,6 +106,31 @@ export default function SlugPage({
 			}
 		} else {
 			return <p>No images</p>;
+		}
+	}
+	function MobileScreens(props) {
+		const screens = props.images;
+		if (screens.length > 0) {
+			return (
+				<Flickity
+					className={'mobile-screens-slider'}
+					elementType={'div'}
+					options={flickityOptions}
+					disableImagesLoaded={false}
+					reloadOnUpdate
+					static
+				>
+					{screens.map((screen) => {
+						return (
+							<div key={screen.id} className="single-mobile-screen">
+								<div className='card'>
+									<img src={screen.sourceUrl} srcSet={screen.srcSet} alt={screen.altText} className="img-fluid" />
+								</div>
+							</div>
+						);
+					})}
+				</Flickity>
+			);
 		}
 	}
 	return (
@@ -158,19 +192,23 @@ export default function SlugPage({
 					<div className='container'>
 						<div className='row content-section'>
 							<div className='col project-featured-image'>
+								<div className="main-image-desktop-wrapper">
 								<img
 									srcSet={caseStudy?.mainImage?.srcSet}
 									src={caseStudy?.mainImage?.sourceUrl}
 									className='img-fluid main-image-desktop'
 									alt={caseStudy?.mainImage?.altText}
-								/>
-								{caseStudy.mainMobileImage && (
-									<img
-										srcSet={caseStudy?.mainMobileImage?.srcSet}
-										src={caseStudy?.mainMObileImage?.sourceUrl}
-										className='img-fluid main-image-mobile'
-										alt={caseStudy?.mainMObileImage?.altText}
 									/>
+								</div>
+								{caseStudy.mainMobileImage && (
+									<div className="main-image-mobile-wrapper">
+										<img
+											srcSet={caseStudy?.mainMobileImage?.srcSet}
+											src={caseStudy?.mainMObileImage?.sourceUrl}
+											className='img-fluid main-image-mobile'
+											alt={caseStudy?.mainMObileImage?.altText}
+										/>
+									</div>
 								)}
 							</div>
 						</div>
@@ -187,6 +225,10 @@ export default function SlugPage({
 							}}
 						></article>
 					</div>
+				</div>
+			</section>
+			<section className='content-section case-study-content-section has-blue-bg project-mini-gallery'>
+				<div className="container">
 					<div className='row content-section'>
 						<div className='col-6'>
 							<GalleryExists
@@ -203,6 +245,10 @@ export default function SlugPage({
 							/>
 						</div>
 					</div>
+				</div>
+			</section>
+			<section className="content-section case-study-content-section project-technology">
+				<div className="container">
 					<div className='row content-section'>
 						<article
 							className='col-10 project-technology-text'
@@ -222,7 +268,7 @@ export default function SlugPage({
 					<div className='row content-section'>
 						<div className='col case-study-mobile-slider'>
 							{mobileImages && (
-								<h1>We got mobile images</h1>
+								<MobileScreens images={mobileImages} />
 							)}
 						</div>
 					</div>
