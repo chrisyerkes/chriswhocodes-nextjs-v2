@@ -46,6 +46,10 @@ export default function SlugPage({
 	} else {
 		var galleryCheck = false;
 	}
+	function onClickHandler(e) {
+		const itemID = e.currentTarget.dataset.image;
+		console.log('you clicked me dawg ' + itemID);
+	}
 	function GalleryExists(props) {
 		const exists = props.exists;
 		const allimages = props.images;
@@ -57,7 +61,7 @@ export default function SlugPage({
 					<ul className="case-study-mini-gallery-list evens">
 						{evens.map((image) => {
 							return (
-								<li key={image.id}>
+								<li key={image.id} data-image={image.id} onClick={onClickHandler}>
 									<img
 										src={image.sourceUrl}
 										srcSet={image.srcSet}
@@ -74,7 +78,7 @@ export default function SlugPage({
 					<ul className="case-study-mini-gallery-list odds">
 						{odds.map((image) => {
 							return (
-								<li key={image.id}>
+								<li key={image.id} data-image={image.id} onClick={onClickHandler}>
 									<img
 										src={image.sourceUrl}
 										srcSet={image.srcSet}
@@ -91,7 +95,7 @@ export default function SlugPage({
 					<ul>
 						{allimages.map((image) => {
 							return (
-								<li key={image.id}>
+								<li key={image.id} data-image={image.id} onClick={onClickHandler}>
 									<img
 										src={image.sourceUrl}
 										srcSet={image.srcSet}
@@ -312,41 +316,45 @@ export default function SlugPage({
 									key={project.node.slug}
 									className='col-6 related-project'
 								>
-									<div className='related-project-image'>
-										<img
-											src={
-												project.node.featuredImage?.node
-													.sourceUrl
-											}
-											srcSet={
-												project.node.featuredImage?.node
-													.srcSet
-											}
-											alt={
-												project.node.featuredImage?.node
-													.altText
-											}
-											className='img-fluid'
-										/>
+									<div className='card d-flex flex-column'>
+										<div className='related-project-image'>
+											<img
+												src={
+													project.node.featuredImage?.node
+														.sourceUrl
+												}
+												srcSet={
+													project.node.featuredImage?.node
+														.srcSet
+												}
+												alt={
+													project.node.featuredImage?.node
+														.altText
+												}
+												className='img-fluid'
+											/>
+										</div>
+										<div className='project-details-wrap'>
+											<h3>{project.node.caseStudyTitle}</h3>
+											<article
+												className='project-mini-description'
+												dangerouslySetInnerHTML={{
+													__html: project.node
+														.projectMiniDescription,
+												}}
+											></article>
+											<p>
+												<Link href={project.node.uri}>
+													<a className='btn btn-link btn-link-sm stretched-link has-arrow-right'>
+														View Project{' '}
+														<FontAwesomeIcon
+															icon={faArrowRight}
+														/>
+													</a>
+												</Link>
+											</p>
+										</div>
 									</div>
-									<h3>{project.node.caseStudyTitle}</h3>
-									<article
-										className='project-mini-description'
-										dangerouslySetInnerHTML={{
-											__html: project.node
-												.projectMiniDescription,
-										}}
-									></article>
-									<p>
-										<Link href={project.node.uri}>
-											<a className='btn btn-link btn-link-sm stretched-link has-arrow-right'>
-												View Project{' '}
-												<FontAwesomeIcon
-													icon={faArrowRight}
-												/>
-											</a>
-										</Link>
-									</p>
 								</div>
 							);
 						})}

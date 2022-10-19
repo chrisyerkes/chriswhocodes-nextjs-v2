@@ -10,7 +10,11 @@
 				1.8px 4px 16px rgba(46, 52, 68, 0.22);
 
 			&:not(:last-child) {
-				@include padding-bottom(30px);
+				@include margin-bottom(44px);
+			}
+
+			&[data-image] {
+				cursor: pointer;
 			}
 		}
 
