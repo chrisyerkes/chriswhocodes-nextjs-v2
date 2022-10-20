@@ -47,8 +47,54 @@ export default function SlugPage({
 		var galleryCheck = false;
 	}
 	function onClickHandler(e) {
-		const itemID = e.currentTarget.dataset.image;
-		console.log('you clicked me dawg ' + itemID);
+		let cleanup = document.querySelector('.image-popup');
+		let overlayCheck = document.querySelector('.image-popup-overlay');
+		if (cleanup) {
+			cleanup.remove();
+		}
+		// const itemID = e.currentTarget.dataset.image;
+		const currItem = e.currentTarget;
+		let topPos = window.scrollY + 100;
+		const imagePopupWrap = document.createElement('div');
+		const imagePopup = document.createElement('div');
+		const imageCloseBtn = document.createElement('button');
+		const clone = currItem.querySelector('img').cloneNode(true);
+		imagePopup.classList.add('image-popup');
+		imagePopupWrap.classList.add('image-popup-wrapper');
+		imageCloseBtn.classList.add('close-button');
+		imagePopupWrap.style.top = topPos + 'px';
+		
+		if (overlayCheck === null) {
+			const overlay = document.createElement('div');
+			overlay.classList.add('image-popup-overlay');
+			document.querySelector('body').appendChild(overlay);
+			setTimeout(function () {
+				overlay.classList.add('opened');
+			}, 100);
+		} else {
+			setTimeout(function () {
+				overlayCheck.classList.add('opened');
+			}, 100);
+		}
+		document.querySelector('body').appendChild(imagePopupWrap);
+		document.querySelector('.image-popup-wrapper').appendChild(imagePopup);
+		imagePopup.appendChild(clone);
+		imagePopup.appendChild(imageCloseBtn);
+
+		// Activating Transition
+		setTimeout(function () {
+			imagePopupWrap.classList.add('opened');
+		}, 100);
+
+		// Closing Popups
+		imageCloseBtn.addEventListener('click', (e) => {
+			let cleanup = document.querySelector('.image-popup-wrapper');
+			let overlayCheck = document.querySelector('.image-popup-overlay');
+			if (cleanup) {
+				cleanup.remove();
+				overlayCheck.classList.remove('opened');
+			}
+		});
 	}
 	function GalleryExists(props) {
 		const exists = props.exists;
@@ -196,13 +242,13 @@ export default function SlugPage({
 					<div className='container'>
 						<div className='row content-section'>
 							<div className='col project-featured-image'>
-								<div className="main-image-desktop-wrapper">
-								<img
-									srcSet={caseStudy?.mainImage?.srcSet}
-									src={caseStudy?.mainImage?.sourceUrl}
-									className='img-fluid main-image-desktop'
-									alt={caseStudy?.mainImage?.altText}
-									/>
+								<div className="has-browser-chrome main-image-desktop-wrapper">
+									<img
+										srcSet={caseStudy?.mainImage?.srcSet}
+										src={caseStudy?.mainImage?.sourceUrl}
+										className='img-fluid main-image-desktop'
+										alt={caseStudy?.mainImage?.altText}
+										/>
 								</div>
 								{caseStudy.mainMobileImage && (
 									<div className="main-image-mobile-wrapper">
@@ -286,7 +332,7 @@ export default function SlugPage({
 				<div className="container">
 					<div className='row content-section'>
 						<div className='col project-goals-featured-image'>
-							<div className='featured-image-wrapper'>
+							<div className='has-browser-chrome featured-image-wrapper'>
 								<img
 									srcSet={caseStudy?.finalImage?.srcSet}
 									src={caseStudy?.finalImage?.sourceUrl}
