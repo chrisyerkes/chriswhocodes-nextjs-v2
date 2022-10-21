@@ -7,6 +7,7 @@ import SkillsList from '../components/SkillsList';
 import ContactInfo from '../components/ContactInfo';
 import Footer from '../components/Footer';
 // import PostCard from '../components/PostCard';
+import { getGeneralSettingsData } from '../lib/general-settings';
 import { getThemeSettings } from '../lib/theme-settings';
 import { getHomepageData } from '../lib/homepage-data';
 import { getAllServices } from '../lib/services';
@@ -19,6 +20,7 @@ import { getAllSkills } from '../lib/skills';
 import { getPrimaryMenu } from '../lib/menus';
 
 export default function Home({
+	generalSettings,
 	themeSettings,
 	homepageData,
 	posts,
@@ -33,7 +35,8 @@ export default function Home({
 	return (
 		<>
 			<Head>
-				<title>Headless WP Next Starter</title>
+				<title>{generalSettings?.title} - Home</title>
+				<meta name='description' content={generalSettings?.description} />
 			</Head>
 			<TemplateHeader
 				pageCheck={pageSlug}
@@ -69,6 +72,7 @@ export async function getStaticProps() {
 	// });
 	// const work = workresponse?.data?.caseStudies?.edges;
 	const pageSlug = 'home';
+	const generalSettings = await getGeneralSettingsData();
 	const themeSettings = await getThemeSettings();
 	const homepageData = await getHomepageData();
 	const services = await getAllServices();
@@ -80,6 +84,7 @@ export async function getStaticProps() {
 
 	return {
 		props: {
+			generalSettings,
 			themeSettings,
 			homepageData,
 			// posts,

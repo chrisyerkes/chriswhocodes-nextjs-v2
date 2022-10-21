@@ -5,6 +5,7 @@
 		font-family: $font-family-serif;
 		@include font-size(32px);
 	}
+
 	@include media-breakpoint-down(md) {
 		pointer-events: none;
 
@@ -12,7 +13,28 @@
 			pointer-events: all;
 		}
 	}
-	& > nav {
+
+	&>nav {
 		@include rfs(60px, padding-top);
+	}
+
+	&.case-study {
+		&>nav>.container {
+			@include media-breakpoint-down(lg) {
+				flex-direction: column;
+
+				.navbar-brand {
+					@include margin-bottom(5px);
+				}
+			}
+
+			@include media-breakpoint-down(md) {
+				flex-direction: row-reverse;
+
+				.navbar-brand {
+					margin-bottom: 0;
+				}
+			}
+		}
 	}
 }

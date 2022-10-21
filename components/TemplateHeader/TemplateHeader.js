@@ -9,7 +9,7 @@ export default function TemplateHeader({
 	currMenu,
 }) {
 	return (
-		<header id='main-header' className={`${className}`}>
+		<header id='main-header' className={`${className} ${pageCheck}`}>
 			<Nav currPage={pageCheck} currMenu={currMenu} />
 			{children}
 		</header>

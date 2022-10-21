@@ -4,8 +4,17 @@
 		@include padding-right(25px);
 		@include padding-left(25px);
 
+		@include media-breakpoint-up(sm) {
+			@include padding-right(15px);
+			@include padding-left(15px);
+		}
+
 		&:first-of-type {
 			@include padding-left(15px);
+
+			@include media-breakpoint-down(md) {
+				@include margin-bottom(44px);
+			}
 		}
 
 		&:last-of-type {
