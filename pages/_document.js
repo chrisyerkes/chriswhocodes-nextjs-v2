@@ -23,7 +23,7 @@ class MyDocument extends Document {
 						rel='stylesheet'
 						href='https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap'
 					></link>
-					<link rel='icon' href='favicon.ico'></link>
+					{/* <link rel='icon' href='favicon.ico'></link> */}
 				</Head>
 				<body>
 					<Main />

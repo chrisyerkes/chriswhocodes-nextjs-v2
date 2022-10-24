@@ -2,13 +2,14 @@ import Head from 'next/head';
 import Footer from '../components/Footer';
 import { client } from '../lib/apollo';
 import { gql } from '@apollo/client';
+import parse from 'html-react-parser';
 
 export default function SlugPage({ post }) {
+	// const yoastHead = parse(post?.seo?.fullHead);
 	return (
 		<div>
 			<Head>
-				<title>Headless WP Next Starter</title>
-				<link rel='icon' href='favicon.ico'></link>
+				{/* {yoastHead} */}
 			</Head>
 
 			<main>
@@ -26,13 +27,13 @@ export default function SlugPage({ post }) {
 				></article>
 			</main>
 
-			<Footer></Footer>
+			{/* <Footer></Footer> */}
 		</div>
 	);
 }
 const GET_POST = gql`
 	query GetPostByURI($id: ID!) {
-		post(id: $id, idType: URI) {
+		page(id: $id, idType: URI) {
 			title
 			content
 			date
@@ -57,7 +58,7 @@ export async function getStaticProps({ params }) {
 		},
 	});
 	// const response = await getPostByUri(params.uri)
-	const post = response?.data?.post;
+	const post = response?.data?.page;
 	return {
 		props: {
 			post,

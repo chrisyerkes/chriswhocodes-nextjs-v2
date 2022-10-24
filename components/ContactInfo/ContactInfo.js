@@ -87,7 +87,7 @@ const ContactInfo = ({
 	}
 	return (
 		<>
-			<section className={className}>
+			<section className={className} id='contact'>
 				<div className='container'>
 					{homeData.contactTitle && (
 						<div className='row'>

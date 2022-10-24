@@ -10,7 +10,7 @@ import Section from '../Section';
 // import styles from './Nav.module.scss';
 import NavListItem from '../NavListItem';
 
-export default function Nav({ currPage, currMenu }) {
+export default function Nav({ siteSettings, currPage, currMenu }) {
 	const menuItems = currMenu[0].node.menuItems?.edges;
 	// Transforms flat list of menu items into tiered list for things like sub menus to work
 	const flatListToHierarchical = (
@@ -85,6 +85,8 @@ export default function Nav({ currPage, currMenu }) {
 										<NavListItem
 											key={listItem.id}
 											item={listItem}
+											currPage={currPage}
+											siteSettings={siteSettings}
 										/>
 									);
 								})}

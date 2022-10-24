@@ -3,6 +3,7 @@ import Nav from '../Nav';
 // import styles from 'TemplateHeader.module.scss';
 
 export default function TemplateHeader({
+	siteSettings,
 	pageCheck,
 	children,
 	className,
@@ -10,7 +11,7 @@ export default function TemplateHeader({
 }) {
 	return (
 		<header id='main-header' className={`${className} ${pageCheck}`}>
-			<Nav currPage={pageCheck} currMenu={currMenu} />
+			<Nav currPage={pageCheck} currMenu={currMenu} siteSettings={siteSettings} />
 			{children}
 		</header>
 	);

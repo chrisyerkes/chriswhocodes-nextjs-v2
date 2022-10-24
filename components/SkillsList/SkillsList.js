@@ -11,7 +11,7 @@ const SkillsList = ({
 	return (
 		<>
 			{skillList && (
-				<section className={className}>
+				<section className={className} id='skills'>
 					<div className='container'>
 						<div className='row'>
 							{homeData.skillsTitle && (

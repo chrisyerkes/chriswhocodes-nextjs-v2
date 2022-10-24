@@ -11,6 +11,7 @@ import { getHomepageData } from '../../lib/homepage-data';
 import { getThemeSettings } from '../../lib/theme-settings';
 import { getCaseStudy } from '../../lib/individual-case-study';
 import { getPrimaryMenu } from '../../lib/menus';
+import parse from 'html-react-parser';
 
 const flickityOptions = {
 	cellSelector: '.single-mobile-screen',
@@ -186,16 +187,17 @@ export default function SlugPage({
 			);
 		}
 	}
+	const yoastHead = parse(caseStudy?.seo?.fullHead);
 	return (
 		<>
 			<Head>
-				<title>{generalSettings?.title} - {caseStudy?.caseStudyTitle}</title>
-				<meta property='og:title' content={`${generalSettings?.title} - ${caseStudy?.caseStudyTitle}`} />
-			</Head>
+				{yoastHead}
+			</Head> 
 			<TemplateHeader
 				className='position-absolute w-100 top-0 start-0'
 				currMenu={primaryMenu}
 				pageCheck={pageSlug}
+				siteSettings={generalSettings}
 			/>
 			<section className='content-section case-study-content-section case-study-header hero'>
 				<div className='container'>

@@ -47,7 +47,7 @@ const ServiceSlider = ({
 	return (
 		<>
 			{serviceData && (
-				<section className={className}>
+				<section className={className} id='services'>
 					<div className='container'>
 						{homeData.servicesTitle && (
 							<div className='row'>

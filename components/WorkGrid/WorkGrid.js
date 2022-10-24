@@ -14,7 +14,7 @@ export default function WorkGrid({
 	className = 'content-section has-tinted-background my-work',
 }) {
 	return (
-		<section className={className}>
+		<section className={className} id='work'>
 			<div className='container'>
 				<div className='row'>
 					<div className='col'>

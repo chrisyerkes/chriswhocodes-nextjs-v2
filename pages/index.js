@@ -7,6 +7,7 @@ import SkillsList from '../components/SkillsList';
 import ContactInfo from '../components/ContactInfo';
 import Footer from '../components/Footer';
 // import PostCard from '../components/PostCard';
+import { getFrontpageSettingsData } from '../lib/frontpage-settings';
 import { getGeneralSettingsData } from '../lib/general-settings';
 import { getThemeSettings } from '../lib/theme-settings';
 import { getHomepageData } from '../lib/homepage-data';
@@ -18,8 +19,10 @@ import {
 } from '../lib/work';
 import { getAllSkills } from '../lib/skills';
 import { getPrimaryMenu } from '../lib/menus';
+import parse from 'html-react-parser';
 
 export default function Home({
+	frontpageSettings,
 	generalSettings,
 	themeSettings,
 	homepageData,
@@ -32,16 +35,17 @@ export default function Home({
 	skills,
 	primaryMenu,
 }) {
+	const yoastHead = parse(frontpageSettings?.seo?.fullHead);
 	return (
 		<>
 			<Head>
-				<title>{generalSettings?.title} - Home</title>
-				<meta name='description' content={generalSettings?.description} />
+				{yoastHead}
 			</Head>
 			<TemplateHeader
 				pageCheck={pageSlug}
 				className='position-absolute w-100 top-0 start-0'
 				currMenu={primaryMenu}
+				siteSettings={generalSettings}
 			/>
 			<HomeHero social={themeSettings} homeData={homepageData} />
 			<ServiceSlider homeData={homepageData} serviceData={services} />
@@ -72,6 +76,7 @@ export async function getStaticProps() {
 	// });
 	// const work = workresponse?.data?.caseStudies?.edges;
 	const pageSlug = 'home';
+	const frontpageSettings = await getFrontpageSettingsData();
 	const generalSettings = await getGeneralSettingsData();
 	const themeSettings = await getThemeSettings();
 	const homepageData = await getHomepageData();
@@ -84,6 +89,7 @@ export async function getStaticProps() {
 
 	return {
 		props: {
+			frontpageSettings,
 			generalSettings,
 			themeSettings,
 			homepageData,
