@@ -101,9 +101,8 @@ const ContactInfo = ({
 					<div className='row justify-content-between flex-column-reverse flex-md-row'>
 						<div
 							className='col-md-4 col-lg-4 contact-photo'
-							onClick={onClickHandler}
 						>
-							<p tabIndex='0' className='portrait-wrap'>
+							<p tabIndex='0' className='portrait-wrap' onClick={onClickHandler}>
 								<img
 									src={me.src}
 									className='img-fluid'
