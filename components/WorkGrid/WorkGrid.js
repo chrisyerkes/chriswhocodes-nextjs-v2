@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import FeaturedWork from '../FeaturedWork/FeaturedWork';
+import PaginatedCasestudies from '../PaginatedCasestudies';
 
 export default function WorkGrid({
 	homeData,
@@ -76,7 +77,7 @@ export default function WorkGrid({
 						})} */}
 					</div>
 				</div>
-				<div
+				{/* <div
 					className='grid work-grid'
 					style={{ columnGap: 80 + 'px', rowGap: 74 + 'px' }}
 				>
@@ -141,7 +142,8 @@ export default function WorkGrid({
 							<span></span>
 						</p>
 					</div>
-				</div>
+				</div> */}
+				<PaginatedCasestudies work={work} />
 			</div>
 		</section>
 	);

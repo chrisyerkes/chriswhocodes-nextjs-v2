@@ -3,6 +3,7 @@ import TemplateHeader from '../components/TemplateHeader';
 import HomeHero from '../components/HomeHero';
 import ServiceSlider from '../components/ServiceSlider';
 import WorkGrid from '../components/WorkGrid';
+import CaseStudyList from '../components/PaginatedCasestudies';
 import SkillsList from '../components/SkillsList';
 import ContactInfo from '../components/ContactInfo';
 import Footer from '../components/Footer';
@@ -20,6 +21,7 @@ import {
 import { getAllSkills } from '../lib/skills';
 import { getPrimaryMenu } from '../lib/menus';
 import parse from 'html-react-parser';
+import PaginatedCasestudies from '../components/PaginatedCasestudies';
 
 export default function Home({
 	frontpageSettings,
@@ -51,9 +53,14 @@ export default function Home({
 			<ServiceSlider homeData={homepageData} serviceData={services} />
 			<WorkGrid
 				featWork={singleFeatWork}
-				work={firstFourWorks}
+				work={work}
 				homeData={homepageData}
 			/>
+			{/* <PaginatedCasestudies
+				featWork={singleFeatWork}
+				work={work}
+				homeData={homepageData}
+			/> */}
 			<SkillsList homeData={homepageData} skillList={skills} />
 			<ContactInfo social={themeSettings} homeData={homepageData} />
 			<Footer social={themeSettings} />
