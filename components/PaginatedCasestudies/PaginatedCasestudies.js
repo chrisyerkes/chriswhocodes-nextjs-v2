@@ -1,5 +1,5 @@
 // Implement Paging later
-// https://codesandbox.io/s/mzwmsn
+// https://letmefail.com/react/implement-load-more-pagination-in-react/
 
 import React from 'react';
 import Link from 'next/link';

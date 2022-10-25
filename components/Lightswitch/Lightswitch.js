@@ -1,13 +1,26 @@
 // import styles from './Lightswitch.module.scss';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun } from '@fortawesome/free-regular-svg-icons';
 import { faMoon } from '@fortawesome/free-solid-svg-icons';
 
 const Lightswitch = () => {
+  React.useEffect(() => {
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    if (prefersDarkScheme.matches) {
+      document.body.classList.add('dark-mode');
+      document.querySelector('.light-switch').classList.remove('off');
+      document.querySelector('.light-switch').classList.add('active');
+    } else {
+      document.body.classList.add('light-mode');
+    }
+  }, []);
+    
   function onClickHandler(e) {
     e.preventDefault;
     const lightswitch = document.querySelector('.light-switch');
     document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle('light-mode');
     lightswitch.classList.toggle('active');
     lightswitch.classList.toggle('off');
   }

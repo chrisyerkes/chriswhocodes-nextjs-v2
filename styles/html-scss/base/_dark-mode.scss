@@ -1,0 +1,493 @@
+$body-bg: #414B66;
+$body-copy-light: #2E3444;
+
+body.dark-mode {
+	color: #fff;
+	background-color: $body-bg;
+
+	.btn {
+		&.btn-link {
+			color: #fff;
+
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+
+	.form-control,
+	.form-floating label {
+		color: $body-copy-light;
+	}
+
+	.navbar-brand {
+		color: #fff;
+	}
+
+	.main-nav {
+		.nav-item {
+			&:not(.light-switch-wrap) {
+				.nav-link {
+					@include media-breakpoint-up(md) {
+						color: #fff;
+					}
+				}
+
+				&:hover {
+					.nav-link {
+						@include media-breakpoint-up(md) {
+							background-color: rgba(255, 255, 255, .2);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.navbar-toggler {
+		color: #fff;
+		border-color: #fff;
+
+		.navbar-toggler-icon {
+			background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+		}
+	}
+
+	.social-nav {
+		&:not(.text-links) {
+			.nav-item {
+				.nav-link {
+					&::after {
+						background-color: #232C46;
+					}
+				}
+			}
+		}
+
+		&.text-links {
+			.nav-item {
+				.nav-link {
+					color: #fff;
+
+					&:hover {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+
+	.content-section {
+		&.has-tinted-background {
+			background: linear-gradient(323.6deg, #101524 0%, #252E49 99.39%);
+		}
+	}
+
+	.hero {
+		background: linear-gradient(281.84deg, #101524 0%, #252E49 100%);
+
+		.sfx {
+			filter: invert(1);
+		}
+	}
+
+	.services {
+		.services-slider {
+			.single-service {
+				.service-icon {
+					background: #101524;
+				}
+
+				.card {
+					&::before {
+						background-color: $body-bg;
+					}
+				}
+			}
+		}
+	}
+
+	.my-work {
+		&::before {
+			background-color: $body-bg;
+		}
+	}
+
+	.featured-work {
+		.featured-work-description {
+			background: linear-gradient(37.44deg, #6B748B -0.03%, #525D7B 99.97%);
+		}
+	}
+
+	.work-grid {
+		.work-item {
+			.card {
+				background: linear-gradient(37.44deg, #6B748B -0.03%, #525D7B 99.97%);
+			}
+		}
+	}
+
+	.skills-list {
+		li {
+			.bullet {
+				position: relative;
+
+				&::before {
+					content: '';
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					width: 30px;
+					height: 30px;
+					background-color: #fff;
+					border-radius: 100%;
+					transform: translate(-50%, -50%);
+					z-index: 50;
+				}
+
+				svg {
+					position: relative;
+					z-index: 100;
+				}
+			}
+		}
+	}
+
+	.case-study-content-section {
+		&.has-blue-bg {
+			background: linear-gradient(323.6deg, #101524 0%, #252E49 99.39%);
+		}
+	}
+
+	.other-projects {
+		.related-project {
+			.card {
+				background: linear-gradient(37.44deg, #6B748B -0.03%, #525D7B 99.97%);
+			}
+		}
+	}
+}
+
+@include color-scheme(dark) {
+	body {
+		color: #fff;
+		background-color: $body-bg;
+	}
+
+	.btn {
+		&.btn-link {
+			color: #fff;
+
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+
+	.form-control,
+	.form-floating label {
+		color: $body-copy-light;
+	}
+
+	.navbar-brand {
+		color: #fff;
+	}
+
+	.main-nav {
+		.nav-item {
+			&:not(.light-switch-wrap) {
+				.nav-link {
+					@include media-breakpoint-up(md) {
+						color: #fff;
+					}
+				}
+
+				&:hover {
+					.nav-link {
+						@include media-breakpoint-up(md) {
+							background-color: rgba(255, 255, 255, .2);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.navbar-toggler {
+		color: #fff;
+		border-color: #fff;
+
+		.navbar-toggler-icon {
+			background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+		}
+	}
+
+	.social-nav {
+		&:not(.text-links) {
+			.nav-item {
+				.nav-link {
+					&::after {
+						background-color: #232C46;
+					}
+				}
+			}
+		}
+
+		&.text-links {
+			.nav-item {
+				.nav-link {
+					color: #fff;
+
+					&:hover {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+
+	.content-section {
+		&.has-tinted-background {
+			background: linear-gradient(323.6deg, #101524 0%, #252E49 99.39%);
+		}
+	}
+
+	.hero {
+		background: linear-gradient(281.84deg, #101524 0%, #252E49 100%);
+
+		.sfx {
+			filter: invert(1);
+		}
+	}
+
+	.services {
+		.services-slider {
+			.single-service {
+				.service-icon {
+					background: #101524;
+				}
+
+				.card {
+					&::before {
+						background-color: $body-bg;
+					}
+				}
+			}
+		}
+	}
+
+	.my-work {
+		&::before {
+			background-color: $body-bg;
+		}
+	}
+
+	.featured-work {
+		.featured-work-description {
+			background: linear-gradient(37.44deg, #6B748B -0.03%, #525D7B 99.97%);
+		}
+	}
+
+	.work-grid {
+		.work-item {
+			.card {
+				background: linear-gradient(37.44deg, #6B748B -0.03%, #525D7B 99.97%);
+			}
+		}
+	}
+
+	.skills-list {
+		li {
+			.bullet {
+				position: relative;
+
+				&::before {
+					content: '';
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					width: 30px;
+					height: 30px;
+					background-color: #fff;
+					border-radius: 100%;
+					transform: translate(-50%, -50%);
+					z-index: 50;
+				}
+
+				svg {
+					position: relative;
+					z-index: 100;
+				}
+			}
+		}
+	}
+
+	.case-study-content-section {
+		&.has-blue-bg {
+			background: linear-gradient(323.6deg, #101524 0%, #252E49 99.39%);
+		}
+	}
+
+	.other-projects {
+		.related-project {
+			.card {
+				background: linear-gradient(37.44deg, #6B748B -0.03%, #525D7B 99.97%);
+			}
+		}
+	}
+
+	body.light-mode {
+		background-color: #fff;
+		color: $body-copy-light;
+
+		.btn {
+			&.btn-link {
+				color: $body-copy-light;
+
+				&:hover {
+					color: $body-copy-light;
+				}
+			}
+		}
+
+		.form-control,
+		.form-floating label {
+			color: $body-copy-light;
+		}
+
+		.navbar-brand {
+			color: var(--bs-navbar-brand-color);
+		}
+
+		.main-nav {
+			.nav-item {
+				&:not(.light-switch-wrap) {
+					.nav-link {
+						@include media-breakpoint-up(md) {
+							color: $body-copy-light;
+						}
+					}
+
+					&:hover {
+						.nav-link {
+							@include media-breakpoint-up(md) {
+								background-color: rgba(255, 255, 255, .7);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.navbar-toggler {
+			color: $body-copy-light;
+			border-color: $body-copy-light;
+
+			.navbar-toggler-icon {
+				background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+			}
+		}
+
+		.social-nav {
+			&:not(.text-links) {
+				.nav-item {
+					.nav-link {
+						&::after {
+							background-color: #fff;
+						}
+					}
+				}
+			}
+
+			&.text-links {
+				.nav-item {
+					.nav-link {
+						color: $body-copy-light;
+
+						&:hover {
+							color: $body-copy-light;
+						}
+					}
+				}
+			}
+		}
+
+		.content-section {
+			&.has-tinted-background {
+				background: linear-gradient(281.84deg, #D3DCE3 0%, #ECF1F5 100%);
+			}
+		}
+
+		.hero {
+			background: linear-gradient(281.84deg, #D3DCE3 0%, #ECF1F5 100%);
+
+			.sfx {
+				filter: invert(0);
+			}
+		}
+
+		.services {
+			.services-slider {
+				.single-service {
+					.service-icon {
+						background: linear-gradient(360deg, #2E3444 -4.55%, #414B66 100%);
+					}
+
+					.card {
+						&::before {
+							background-color: #fff;
+						}
+					}
+				}
+			}
+		}
+
+		.my-work {
+			&::before {
+				background-color: #fff;
+			}
+		}
+
+		.featured-work {
+			.featured-work-description {
+				background: linear-gradient(217.44deg, #2E3444 0%, #2E3444 0.01%, #414B66 100%);
+
+				.btn-link {
+					color: #fff;
+				}
+			}
+		}
+
+		.work-grid {
+			.work-item {
+				.card {
+					background: #fff;
+				}
+			}
+		}
+
+		.skills-list {
+			li {
+				.bullet {
+					&::before {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.case-study-content-section {
+		&.has-blue-bg {
+			background: linear-gradient(281.84deg, #D3DCE3 0%, #ECF1F5 100%);
+		}
+	}
+
+	.other-projects {
+		.related-project {
+			.card {
+				background: #fff;
+			}
+		}
+	}
+}

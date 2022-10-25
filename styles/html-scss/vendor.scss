@@ -46,3 +46,5 @@
 // Put these styles in react css components
 @import "layout/layout-index";
 @import "modules/module-index";
+// Dark Mode Styles to avoid !important
+@import "base/dark-mode";
