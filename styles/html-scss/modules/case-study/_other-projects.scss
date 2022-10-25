@@ -1,8 +1,8 @@
 .other-projects {
 	.related-project {
 		position: relative;
-		@include padding-right(25px);
-		@include padding-left(25px);
+		@include padding-right(15px);
+		@include padding-left(15px);
 
 		@include media-breakpoint-up(sm) {
 			@include padding-right(15px);
