@@ -1,5 +1,5 @@
 #main-header {
-	z-index: 100;
+	z-index: 1050;
 
 	.navbar-brand {
 		font-family: $font-family-serif;
@@ -9,6 +9,7 @@
 	@include media-breakpoint-down(md) {
 		pointer-events: none;
 
+		.navbar-brand,
 		.navbar-toggler {
 			pointer-events: all;
 		}
