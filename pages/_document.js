@@ -7,6 +7,18 @@ class MyDocument extends Document {
 	}
 
 	render() {
+		const setInitialTheme = `
+      function getUserPreference() {
+        if(window.localStorage.getItem('theme')) {
+          return window.localStorage.getItem('theme')
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches 
+          ? 'dark-mode' 
+          : 'light-mode'
+      }
+      document.body.dataset.theme = getUserPreference();
+			document.body.classList.add(getUserPreference());
+    `;
 		return (
 			<Html>
 				<Head>
@@ -33,6 +45,7 @@ class MyDocument extends Document {
 					<link rel='icon' href='/favicon.ico'></link>
 				</Head>
 				<body>
+					<script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />
 					<Main />
 					<NextScript />
 				</body>

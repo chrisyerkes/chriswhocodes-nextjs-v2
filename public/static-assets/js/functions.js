@@ -4,10 +4,17 @@
 // 	function (event) {
 		// Mobile Menu Toggler
 		// const navToggler = document.querySelector('.navbar-toggler');
-		const mobileNav = document.querySelector('.offcanvas');
-		mobileNav.addEventListener('hide.bs.offcanvas', (event) => {
-			mobileNav.classList.add('hiding');
-		});
+// const mobileNav = document.querySelector('.offcanvas');
+// const mobileNavItems = document.querySelectorAll('.offcanvas-body .nav-item');
+// 		mobileNav.addEventListener('hide.bs.offcanvas', (event) => {
+// 			mobileNav.classList.add('hiding');
+// 		});
+// mobileNavItems.forEach((item) => {
+// 	item.addEventListener('click', (e) => {
+// 		console.log('test');
+// 		// mobileNav.toggle();
+// 	});		
+// });
 
 		/*
 		// navToggler.addEventListener('click', function () {

@@ -90,8 +90,8 @@ const Layout = ({ children }) => {
       {/* <FooterScripts url="/static-assets/js/bootstrap.bundle.min.js" /> */}
       {/* <FooterScripts url="/static-assets/js/functions.js" defer={true} className="remove" /> */}
       {/* investigate getting bootstrap js modules to work in nextjs app. check bookmark in mops digital chrome for article */}
-      <Script url="/static-assets/js/flickity.pkgd.min.js" strategy="lazyOnload" />
-      <Script src="/static-assets/js/functions.js" strategy="lazyOnload" />
+      {/* <Script url="/static-assets/js/flickity.pkgd.min.js" strategy="lazyOnload" /> */}
+      {/* <Script src="/static-assets/js/functions.js" strategy="lazyOnload" /> */}
     </div>
   );
 };

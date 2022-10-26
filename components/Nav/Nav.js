@@ -1,10 +1,15 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import dynamic from 'next/dynamic';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import Link from 'next/link';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 
-import Lightswitch from '../Lightswitch';
+// import Lightswitch from '../Lightswitch';
+const Lightswitch = dynamic(() => import('../Lightswitch'), {
+	ssr: false,
+});
 import Section from '../Section';
 
 // import styles from './Nav.module.scss';
@@ -34,6 +39,10 @@ export default function Nav({ siteSettings, currPage, currMenu }) {
 		return tree;
 	};
 	const hierarchicalMenu = flatListToHierarchical(menuItems);
+	const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 	function PageCheck() {
 		if (currPage != 'home') {
 			return (
@@ -51,17 +60,18 @@ export default function Nav({ siteSettings, currPage, currMenu }) {
 				<div className='container'>
 					<PageCheck />
 					<button
+						onClick={handleShow}
 						className='navbar-toggler'
 						type='button'
-						data-bs-toggle='offcanvas'
-						data-bs-target='#navbarNav'
-						aria-controls='navbarNav'
-						aria-expanded='false'
-						aria-label='Toggle navigation'
+						// data-bs-toggle='offcanvas'
+						// data-bs-target='#navbarNav'
+						// aria-controls='navbarNav'
+						// aria-expanded='false'
+						// aria-label='Toggle navigation'
 					>
 						<span className='navbar-toggler-icon'></span>
 					</button>
-					<div
+					{/* <div
 						className='offcanvas offcanvas-end mobile-offcanvas'
 						data-bs-backdrop='false'
 						data-bs-scroll='true'
@@ -78,7 +88,20 @@ export default function Nav({ siteSettings, currPage, currMenu }) {
 								<FontAwesomeIcon icon={faXmark} />
 							</button>
 						</div>
-						<div className='offcanvas-body'>
+						<div className='offcanvas-body'> */}
+					<Offcanvas className='offcanvas mobile-offcanvas' show={show} onHide={handleClose} scroll={true} backdrop={false} placement='end' name='end' responsive='md'>
+						<Offcanvas.Header>
+							<button
+								type='button'
+								className='btn-close'
+								// data-bs-dismiss='offcanvas'
+								aria-label='Close'
+								onClick={handleClose}
+							>
+								<FontAwesomeIcon icon={faXmark} />
+							</button>
+						</Offcanvas.Header>
+						<Offcanvas.Body>
 							<ul className='navbar-nav mx-auto mx-lg-0 ms-lg-auto h-100 main-nav'>
 								{hierarchicalMenu?.map((listItem) => {
 									return (
@@ -90,6 +113,11 @@ export default function Nav({ siteSettings, currPage, currMenu }) {
 										/>
 									);
 								})}
+								<Lightswitch />
+							</ul>
+						</Offcanvas.Body>
+					</Offcanvas>
+							
 
 								{/* <li className='nav-item'>
 									<a
@@ -122,11 +150,11 @@ export default function Nav({ siteSettings, currPage, currMenu }) {
 											<i className='fa-solid fa-moon'></i>
 										</span>
 									</button>
-								</li> */}
+								</li>
 								<Lightswitch />
 							</ul>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</nav>
 			{/* <nav className={styles.nav}>
