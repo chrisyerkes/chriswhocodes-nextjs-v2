@@ -40,7 +40,7 @@ export default function Nav({ siteSettings, currPage, currMenu }) {
 	};
 	const hierarchicalMenu = flatListToHierarchical(menuItems);
 	const [show, setShow] = useState(false);
-
+	
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 	function PageCheck() {
@@ -53,6 +53,9 @@ export default function Nav({ siteSettings, currPage, currMenu }) {
 		} else {
 			return null;
 		}
+	}
+	function onClickHandler() {
+		handleClose();
 	}
 	return (
 		<>
@@ -89,7 +92,7 @@ export default function Nav({ siteSettings, currPage, currMenu }) {
 							</button>
 						</div>
 						<div className='offcanvas-body'> */}
-					<Offcanvas className='offcanvas mobile-offcanvas' show={show} onHide={handleClose} scroll={true} backdrop={false} placement='end' name='end' responsive='md'>
+					<Offcanvas restoreFocus={false} className='offcanvas mobile-offcanvas' show={show} onHide={handleClose} scroll={true} backdrop={false} placement='end' name='end' responsive='md'>
 						<Offcanvas.Header>
 							<button
 								type='button'
@@ -110,6 +113,7 @@ export default function Nav({ siteSettings, currPage, currMenu }) {
 											item={listItem}
 											currPage={currPage}
 											siteSettings={siteSettings}
+											clickAction={onClickHandler}
 										/>
 									);
 								})}

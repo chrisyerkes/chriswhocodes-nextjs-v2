@@ -1,20 +1,14 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const NavListItem = ({ siteSettings, item, currPage }) => {
+const NavListItem = ({ siteSettings, clickAction, item, currPage }) => {
 	const nestedItems = (item.children || []).map((item) => {
 		return <NavListItem key={item.id} item={item} />;
 	});
 	// const router = useRouter();
 	
-	function onClickHandler() {
-		const mobileNav = new bootstrap.Offcanvas('.offcanvas');
-		console.log(mobileNav);
-		mobileNav.toggle();
-	}
-	
 	return (
-		<li key={item.id} className='nav-item' onClick={onClickHandler}>
+		<li key={item.id} className='nav-item' onClick={clickAction}>
 			{!item.path.includes('http') && !item.target && !item.cssClasses.includes('home-anchor') && !currPage == 'home' && (
 				<Link href={item.path}>
 					<a title={item.title} className='nav-link'>

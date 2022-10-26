@@ -5,35 +5,17 @@ import { faSun } from '@fortawesome/free-regular-svg-icons';
 import { faMoon } from '@fortawesome/free-solid-svg-icons';
 
 const Lightswitch = () => {
-  // React.useEffect(() => {
-  // const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-  //   if (prefersDarkScheme.matches) {
-  //     document.body.classList.add('dark-mode');
-  //     document.querySelector('.light-switch').classList.remove('off');
-  //     document.querySelector('.light-switch').classList.add('active');
-  //   } else {
-  //     document.body.classList.add('light-mode');
-  //   }
-  // }, []);  
   const [activeTheme, setActiveTheme] = useState(document.body.dataset.theme);
   const inactiveTheme = activeTheme === 'light-mode' ? 'dark-mode' : 'light-mode';
 
-  // const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-  // if(window.localStorage.getItem('theme'))
-  // if (prefersDarkScheme.matches) {
-  //   document.body.dataset.theme = 'dark';
-  //   document.body.classList.add('dark-mode');
-  //   document.querySelector('.light-switch').classList.remove('off');
-  //   document.querySelector('.light-switch').classList.add('active');
-  // } else {
-  //   document.body.classList.add('light-mode');
-  //   document.body.dataset.theme = 'light';
-  // }
-
   useEffect(() => {
-    
+    const lightswitch = document.querySelector('.light-switch');
     document.body.dataset.theme = activeTheme;
     window.localStorage.setItem('theme', activeTheme);
+    if (activeTheme === 'dark-mode') {
+      lightswitch.classList.remove('off');
+      lightswitch.classList.add('active');
+    }
   }, [activeTheme]);
     
   function onClickHandler(e) {
