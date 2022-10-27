@@ -7,20 +7,33 @@
 	@include media-breakpoint-down(md) {
 		@include padding-top(60px);
 	}
+
+	&.page {
+		@include padding-top(270px);
+		@include padding-bottom(75px);
+	}
+
 	.hero-title {
 		@include font-size(96px);
 		line-height: 1.1;
 		font-weight: $font-weight-normal;
 		@include rfs(25px, margin-bottom);
 	}
+
 	.hero-subtitle {
-		@include font-size(32px);
-		line-height: 1.45;
-		@include rfs(35px, margin-bottom);
+
+		&,
+		p {
+			@include font-size(32px);
+			line-height: 1.45;
+			@include rfs(35px, margin-bottom);
+		}
 	}
+
 	.hero-left {
 		@include rfs(80px, padding-bottom);
 	}
+
 	.hero-right {
 		z-index: 50;
 		position: relative;
@@ -29,6 +42,7 @@
 		@include media-breakpoint-down(lg) {
 			padding-bottom: 0;
 		}
+
 		// img {
 		// 	position: absolute;
 		// 	top: 0;

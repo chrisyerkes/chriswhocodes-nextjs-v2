@@ -19,7 +19,8 @@
 		@include rfs(60px, padding-top);
 	}
 
-	&.case-study {
+	&.case-study,
+	&.page {
 		&>nav>.container {
 			@include media-breakpoint-down(lg) {
 				flex-direction: column;
