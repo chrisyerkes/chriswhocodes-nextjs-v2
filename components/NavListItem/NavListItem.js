@@ -30,7 +30,14 @@ const NavListItem = ({ siteSettings, clickAction, item, currPage }) => {
 					</a>
 				</Link>
 			)}
-			{currPage !== 'home' && !item.cssClasses.includes('home-anchor') && (
+			{currPage !== 'home' && currPage !== 'case-study' && !item.cssClasses.includes('home-anchor') && (
+				<Link href={`/${item.path}`}>
+					<a title={item.title} className='nav-link'>
+						{item.label}
+					</a>
+				</Link>
+			)}
+			{currPage === 'case-study' && !item.cssClasses.includes('home-anchor') && (
 				<Link href={item.path}>
 					<a title={item.title} className='nav-link'>
 						{item.label}
