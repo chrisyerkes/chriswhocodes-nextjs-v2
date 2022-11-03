@@ -42,6 +42,20 @@
 				max-width: 375px;
 				max-height: 667px;
 			}
+
+			@include media-breakpoint-down(md) {
+				span {
+					width: 100% !important;
+					height: 100% !important;
+
+					img {
+						width: 100% !important;
+						height: auto !important;
+						max-height: none !important;
+						bottom: unset !important;
+					}
+				}
+			}
 		}
 
 		.main-image-desktop-wrapper {
