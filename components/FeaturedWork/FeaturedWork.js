@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,10 +14,13 @@ export default function FeaturedWork({ featWork }) {
 						className='work-wrapper d-block d-lg-flex featured-work'
 					>
 						<div className='featured-work-image'>
-							<img
-								srcSet={el.node.featuredImage?.node.srcSet}
+							<Image
+								// srcSet={el.node.featuredImage?.node.srcSet}
 								src={el.node.featuredImage?.node.sourceUrl}
 								alt={el.node.featuredImage?.node.altText}
+								width={el.node.featuredImage?.node?.mediaDetails.width}
+								height={el.node.featuredImage?.node?.mediaDetails.height}
+								layout='responsive'
 								className='img-fluid'
 							/>
 						</div>

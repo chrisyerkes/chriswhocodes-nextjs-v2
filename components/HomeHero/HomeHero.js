@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faLinkedinIn,
@@ -260,30 +261,52 @@ const HomeHero = ({
 						</p>
 						<div className='chris-animated-container'>
 							<div className='sfx sfx-clack-single'>
-								<img
+								{/* <img
 									src={Clack.src}
 									alt='Keyboard clack sound effect'
+								/> */}
+								<Image 
+									src={Clack.src}
+									alt='Keyboard clack sound effect'
+									width={230}
+									height={151}
+									layout='responsive'
 								/>
 							</div>
 							<div className='sfx sfx-clack-double'>
-								<img
+								<Image
 									src={ClackClack.src}
+									width={275}
+									height={215}
+									layout='responsive'
 									alt='Keyboard clack sound effect'
 								/>
 							</div>
 							<div className='character character-body'>
-								<img
+								<Image
 									src={Body.src}
 									alt='Chris and his pugs working on his laptop'
+									width={1707}
+									height={1474}
+									layout='responsive'
 								/>
 							</div>
 							<div className='character character-left-arm'>
-								<img src={ArmLeft.src} alt="Chris's left arm" />
+								<Image
+									src={ArmLeft.src}
+									alt="Chris's left arm"
+									width={117}
+									height={275}
+									layout='responsive'
+								/>
 							</div>
 							<div className='character character-right-arm'>
-								<img
+								<Image
 									src={ArmRight.src}
 									alt="Chris's right arm"
+									width={108}
+									height={269}
+									layout='responsive'
 								/>
 							</div>
 							<div className='pug pug-henry'></div>

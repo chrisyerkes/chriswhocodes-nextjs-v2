@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import me from '../../public/static-assets/images/cropped-square.jpg';
@@ -103,10 +104,13 @@ const ContactInfo = ({
 							className='col-md-4 col-lg-4 contact-photo'
 						>
 							<p tabIndex='0' className='portrait-wrap' onClick={onClickHandler}>
-								<img
+								<Image
 									src={me.src}
 									className='img-fluid'
 									alt='Photo of me, Chris Yerkes'
+									width={800}
+									height={800}
+									layout='responsive'
 								/>
 							</p>
 							{(social.linkedinProfile ||

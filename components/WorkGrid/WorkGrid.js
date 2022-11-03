@@ -2,9 +2,6 @@
 // https://codesandbox.io/s/mzwmsn
 
 import React from 'react';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import FeaturedWork from '../FeaturedWork/FeaturedWork';
 import PaginatedCasestudies from '../PaginatedCasestudies';
 

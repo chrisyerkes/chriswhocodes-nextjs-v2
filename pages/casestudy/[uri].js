@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Flickity from 'react-flickity-component';
@@ -62,7 +63,9 @@ export default function SlugPage({
 		const imagePopupWrap = document.createElement('div');
 		const imagePopup = document.createElement('div');
 		const imageCloseBtn = document.createElement('button');
-		const clone = currItem.querySelector('img').cloneNode(true);
+		// const newImage = document.createElement('img');
+		const newImage = currItem.querySelector('img').cloneNode(true);
+		newImage.style = '';
 		imagePopup.classList.add('image-popup');
 		imagePopupWrap.classList.add('image-popup-wrapper');
 		imageCloseBtn.classList.add('close-button');
@@ -82,7 +85,8 @@ export default function SlugPage({
 		}
 		document.querySelector('body').appendChild(imagePopupWrap);
 		document.querySelector('.image-popup-wrapper').appendChild(imagePopup);
-		imagePopup.appendChild(clone);
+		// imagePopup.appendChild(clone);
+		imagePopup.append(newImage);
 		imagePopup.appendChild(imageCloseBtn);
 
 		// Activating Transition
@@ -112,11 +116,14 @@ export default function SlugPage({
 						{evens.map((image) => {
 							return (
 								<li key={image.id} data-image={image.id} className='has-browser-chrome' onClick={onClickHandler}>
-									<img
+									<Image
 										src={image.sourceUrl}
-										srcSet={image.srcSet}
+										// srcSet={image.srcSet}
 										alt={image.altText}
 										className='img-fluid'
+										width={image?.mediaDetails.width}
+										height={image?.mediaDetails.height}
+										layout='responsive'
 									/>
 								</li>
 							);
@@ -129,11 +136,14 @@ export default function SlugPage({
 						{odds.map((image) => {
 							return (
 								<li key={image.id} data-image={image.id} className='has-browser-chrome' onClick={onClickHandler}>
-									<img
+									<Image
 										src={image.sourceUrl}
-										srcSet={image.srcSet}
+										// srcSet={image.srcSet}
 										alt={image.altText}
 										className='img-fluid'
+										width={image?.mediaDetails.width}
+										height={image?.mediaDetails.height}
+										layout='responsive'
 									/>
 								</li>
 							);
@@ -146,11 +156,14 @@ export default function SlugPage({
 						{allimages.map((image) => {
 							return (
 								<li key={image.id} data-image={image.id} className='has-browser-chrome' onClick={onClickHandler}>
-									<img
+									<Image
 										src={image.sourceUrl}
-										srcSet={image.srcSet}
+										// srcSet={image.srcSet}
 										alt={image.altText}
 										className='img-fluid'
+										width={image?.mediaDetails.width}
+										height={image?.mediaDetails.height}
+										layout='responsive'
 									/>
 								</li>
 							);
@@ -179,6 +192,14 @@ export default function SlugPage({
 							<div key={screen.id} className="single-mobile-screen">
 								<div className='card'>
 									<img src={screen.sourceUrl} srcSet={screen.srcSet} alt={screen.altText} className="img-fluid" />
+									<Image
+										src={screen.sourceUrl}
+										alt={screen.altText}
+										className='img-fluid'
+										width={screen?.mediaDetails.width}
+										height={screen?.mediaDetails.height}
+										layout='responsive'
+									/>
 								</div>
 							</div>
 						);
@@ -258,20 +279,26 @@ export default function SlugPage({
 						<div className='row content-section'>
 							<div className='col project-featured-image'>
 								<div className="has-browser-chrome main-image-desktop-wrapper">
-									<img
-										srcSet={caseStudy?.mainImage?.srcSet}
+									<Image
+										// srcSet={caseStudy?.mainImage?.srcSet}
 										src={caseStudy?.mainImage?.sourceUrl}
 										className='img-fluid main-image-desktop'
 										alt={caseStudy?.mainImage?.altText}
-										/>
+										width={caseStudy?.mainImage?.mediaDetails.width}
+										height={caseStudy?.mainImage?.mediaDetails.height}
+										layout='responsive'
+									/>
 								</div>
 								{caseStudy.mainMobileImage && (
 									<div className="main-image-mobile-wrapper">
-										<img
-											srcSet={caseStudy?.mainMobileImage?.srcSet}
-											src={caseStudy?.mainMObileImage?.sourceUrl}
+										<Image
+											// srcSet={caseStudy?.mainMobileImage?.srcSet}
+											src={caseStudy?.mainMobileImage?.sourceUrl}
 											className='img-fluid main-image-mobile'
-											alt={caseStudy?.mainMObileImage?.altText}
+											alt={caseStudy?.mainMobileImage?.altText}
+											width={caseStudy?.mainMobileImage?.mediaDetails.width}
+											height={caseStudy?.mainMobileImage?.mediaDetails.height}
+											layout='intrinsic'
 										/>
 									</div>
 								)}
@@ -361,11 +388,14 @@ export default function SlugPage({
 						<div className='row content-section'>
 							<div className='col project-goals-featured-image'>
 								<div className='has-browser-chrome featured-image-wrapper'>
-									<img
-										srcSet={caseStudy?.finalImage?.srcSet}
+									<Image
+										// srcSet={caseStudy?.finalImage?.srcSet}
 										src={caseStudy?.finalImage?.sourceUrl}
 										className='img-fluid'
 										alt={caseStudy?.finalImage?.altText}
+										width={caseStudy?.finalImage?.mediaDetails.width}
+										height={caseStudy?.finalImage?.mediaDetails.height}
+										layout='responsive'
 									/>
 								</div>
 							</div>
@@ -396,20 +426,23 @@ export default function SlugPage({
 									>
 										<div className='card d-flex flex-column'>
 											<div className='related-project-image'>
-												<img
+												<Image
 													src={
 														project.node.featuredImage?.node
 															.sourceUrl
 													}
-													srcSet={
-														project.node.featuredImage?.node
-															.srcSet
-													}
+													// srcSet={
+													// 	project.node.featuredImage?.node
+													// 		.srcSet
+													// }
 													alt={
 														project.node.featuredImage?.node
 															.altText
 													}
 													className='img-fluid'
+													width={project.node.featuredImage?.node?.mediaDetails.width}
+													height={project.node.featuredImage?.node?.mediaDetails.height}
+													layout='responsive'
 												/>
 											</div>
 											<div className='project-details-wrap'>
