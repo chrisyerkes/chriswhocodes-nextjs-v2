@@ -281,7 +281,7 @@ const ContactInfo = ({
 								<input
 									type='hidden'
 									name='_next'
-									value='http://localhost:3000/thank-you'
+									value='https://chriswho.codes/thank-you'
 								/>
 								<input
 									type='hidden'
