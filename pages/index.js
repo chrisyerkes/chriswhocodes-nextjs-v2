@@ -37,7 +37,9 @@ export default function Home({
 	skills,
 	primaryMenu,
 }) {
-	const yoastHead = parse(frontpageSettings?.seo?.fullHead);
+	const rawSEO = frontpageSettings?.seo?.fullHead;
+	const cleanedSEO = rawSEO.replace('admin.chriswho.codes', 'chriswho.codes');
+	const yoastHead = parse(cleanedSEO);
 	return (
 		<>
 			<Head>

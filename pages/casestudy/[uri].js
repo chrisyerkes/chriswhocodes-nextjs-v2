@@ -208,7 +208,9 @@ export default function SlugPage({
 			);
 		}
 	}
-	const yoastHead = parse(caseStudy?.seo?.fullHead);
+	const rawSEO = caseStudy?.seo?.fullHead;
+	const cleanedSEO = rawSEO.replace('admin.chriswho.codes', 'chriswho.codes');
+	const yoastHead = parse(cleanedSEO);
 	return (
 		<>
 			<Head>

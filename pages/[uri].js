@@ -8,8 +8,9 @@ import { getPrimaryMenu } from '../lib/menus';
 import parse from 'html-react-parser';
 
 export default function Page({ pageData, generalSettings, pageSlug, themeSettings, primaryMenu }) {
-	const yoastHead = parse(pageData?.seo?.fullHead);
-
+	const rawSEO = pageData?.seo?.fullHead;
+	const cleanedSEO = rawSEO.replace('admin.chriswho.codes', 'chriswho.codes');
+	const yoastHead = parse(cleanedSEO);
 	return (
 		<div>
 			<Head>
