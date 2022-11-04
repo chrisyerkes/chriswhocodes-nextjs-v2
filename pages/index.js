@@ -39,7 +39,8 @@ export default function Home({
 }) {
 	const rawSEO = frontpageSettings?.seo?.fullHead;
 	const cleanedSEO = rawSEO.replace('admin.chriswho.codes', 'chriswho.codes');
-	const yoastHead = parse(cleanedSEO);
+	const wImageSEO = cleanedSEO.replace('https://chriswho.codes/wp-content/uploads/', 'https://admin.chriswho.codes/wp-content/uploads/');
+	const yoastHead = parse(wImageSEO);
 	return (
 		<>
 			<Head>
