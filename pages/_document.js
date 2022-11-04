@@ -29,6 +29,7 @@ class MyDocument extends Document {
 					<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"></link>
 					<meta name="msapplication-TileColor" content="#da532c"></meta>
 					<meta name="theme-color" content="#ffffff"></meta>
+					<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"></meta>
 					<link
 						rel='preconnect'
 						href='https://fonts.googleapis.com'
