@@ -389,11 +389,11 @@ body.dark-mode {
 		}
 
 		.social-nav {
-			&:not(.text-links) {
+			&:not(.text-links):not(.white-social-nav) {
 				.nav-item {
 					.nav-link {
 						&::after {
-							background-color: transparent;
+							background-color: #fff;
 						}
 					}
 				}
