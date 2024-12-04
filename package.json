@@ -23,5 +23,8 @@
     "react-flickity-component": "^3.6.3",
     "sass": "^1.54.9",
     "sharp": "^0.31.0"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
